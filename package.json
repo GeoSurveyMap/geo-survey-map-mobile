@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "main": "expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
+    "start": "NODE_ENV=development npx expo start",
+    "android": "NODE_ENV=development npx expo run:android",
+    "ios": "NODE_ENV=development npx expo run:ios",
+    "start:prod": "NODE_ENV=production npx expo start",
+    "ios:prod": "NODE_ENV=production npx expo run:ios",
+    "android:prod": "NODE_ENV=production npx expo run:android",
     "lint": "eslint .",
     "prepare": "husky"
   },
@@ -35,6 +38,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
     "typescript": "~5.3.3"
   },
   "private": true,

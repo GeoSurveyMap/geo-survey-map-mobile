@@ -1,4 +1,4 @@
-rootProject.name = 'geo-survey-map-mobile'
+rootProject.name = 'Geo Survey Map'
 
 dependencyResolutionManagement {
   versionCatalogs {

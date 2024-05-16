@@ -1,13 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { HELLO_WORLD } from 'geo-survey-map-shared-modules';
+import { updateApiClient } from 'geo-survey-map-shared-modules';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
+updateApiClient.setBaseURL(process.env.EXPO_PUBLIC_API_URL || '');
 
 // eslint-disable-next-line import/no-default-export
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>{HELLO_WORLD}</Text>
       <StatusBar style="auto" />
     </View>
   );
