@@ -22,6 +22,19 @@ const config: ExpoConfig = {
     },
     package: 'com.geosurvey.map.mobile',
   },
+  plugins: [
+    [
+      'expo-font',
+      {
+        Montserrat: {
+          '400': require.resolve('geo-survey-map-shared-modules/src/assets/fonts/Montserrat/Montserrat-Regular.ttf'),
+          '700': require.resolve('geo-survey-map-shared-modules/src/assets/fonts/Montserrat/Montserrat-Bold.ttf'),
+          '600': require.resolve('geo-survey-map-shared-modules/src/assets/fonts/Montserrat/Montserrat-SemiBold.ttf'),
+          '500': require.resolve('geo-survey-map-shared-modules/src/assets/fonts/Montserrat/Montserrat-Medium.ttf'),
+        },
+      },
+    ],
+  ],
 };
 
 // eslint-disable-next-line import/no-default-export
