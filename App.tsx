@@ -5,9 +5,7 @@ import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import './src/styles';
 
-import { BlurInsets } from '@/components/BlurInsets/BlurInsets';
-
-import { MapContent } from './src/components/Map/Map';
+import { Map } from '@/screens/Map/Map';
 
 updateApiClient.setBaseURL(process.env.EXPO_PUBLIC_API_URL || '');
 
@@ -17,8 +15,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <SafeAreaProvider style={{ flex: 1 }}>
         <StatusBar style="auto" />
-        <BlurInsets />
-        <MapContent />
+        <Map />
       </SafeAreaProvider>
     </QueryClientProvider>
   );
