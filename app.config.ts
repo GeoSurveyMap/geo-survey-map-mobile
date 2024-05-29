@@ -7,6 +7,7 @@ const config: ExpoConfig = {
   version: process.env.EXPO_PUBLIC_APP_VERSION || '0.0.0',
   orientation: 'portrait',
   userInterfaceStyle: 'automatic',
+  scheme: 'geosurveymap',
   splash: {
     resizeMode: 'contain',
     backgroundColor: '#ffffff',

@@ -4,17 +4,23 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 
 import { ButtonType, MapButton } from '@/components/RectButton/MapButton';
+import { useAuth } from '@/libs/kinde';
 
 import { stylesheet } from './OverlayButtons.styles';
 
 export const OverlayButtons: React.FC = () => {
   const { styles } = useStyles(stylesheet);
+  const { isAuthenticated, handleLogin, handleLogout } = useAuth();
 
   return (
     <SafeAreaView style={styles.container} pointerEvents={'box-none'}>
       <View style={styles.buttonRow}>
         <MapButton type={ButtonType.FILTER} />
-        <MapButton type={ButtonType.LOGIN} />
+        {isAuthenticated ? (
+          <MapButton type={ButtonType.PROFILE} onPress={handleLogout} />
+        ) : (
+          <MapButton type={ButtonType.LOGIN} onPress={handleLogin} />
+        )}
       </View>
       <View style={[styles.buttonRow, styles.rowReversed]}>
         <MapButton type={ButtonType.LOCALIZE} />
