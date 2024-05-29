@@ -35,6 +35,12 @@ const config: ExpoConfig = {
         },
       },
     ],
+    [
+      'expo-location',
+      {
+        locationWhenInUsePermission: 'Allow $(PRODUCT_NAME) to use your location.',
+      },
+    ],
   ],
 };
 

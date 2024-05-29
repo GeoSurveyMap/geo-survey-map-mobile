@@ -1,9 +1,11 @@
 import { darkTheme, lightTheme } from 'geo-survey-map-shared-modules';
 import { UnistylesRegistry } from 'react-native-unistyles';
 
+import type { Theme } from 'geo-survey-map-shared-modules';
+
 type AppThemes = {
-  light: typeof lightTheme;
-  dark: typeof darkTheme;
+  light: Theme;
+  dark: Theme;
 };
 
 declare module 'react-native-unistyles' {

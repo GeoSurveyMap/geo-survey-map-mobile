@@ -8,10 +8,14 @@ import { useAuth } from '@/libs/kinde';
 
 import { stylesheet } from './OverlayButtons.styles';
 
-export const OverlayButtons: React.FC = () => {
-  const { styles } = useStyles(stylesheet);
-  const { isAuthenticated, handleLogin, handleLogout } = useAuth();
+type Props = {
+  onUserFocus: () => void;
+  isUserFocused: boolean;
+};
 
+export const OverlayButtons: React.FC<Props> = ({ onUserFocus, isUserFocused }) => {
+  const { styles, theme } = useStyles(stylesheet);
+  const { isAuthenticated, handleLogin, handleLogout } = useAuth();
   return (
     <SafeAreaView style={styles.container} pointerEvents={'box-none'}>
       <View style={styles.buttonRow}>
@@ -23,7 +27,11 @@ export const OverlayButtons: React.FC = () => {
         )}
       </View>
       <View style={[styles.buttonRow, styles.rowReversed]}>
-        <MapButton type={ButtonType.LOCALIZE} />
+        <MapButton
+          type={ButtonType.LOCALIZE}
+          onPress={onUserFocus}
+          iconColor={isUserFocused ? theme.primary : undefined}
+        />
       </View>
     </SafeAreaView>
   );

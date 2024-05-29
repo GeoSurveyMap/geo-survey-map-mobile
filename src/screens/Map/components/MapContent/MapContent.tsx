@@ -4,12 +4,11 @@ import { View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { useStyles } from 'react-native-unistyles';
 
-import { MapMarker } from '../../../../components/MapMarker/MapMarker';
+import { MapMarker } from '@/components/MapMarker/MapMarker';
 
 import { stylesheet } from './MapContent.styles';
 
-type Props = {};
-
+// TODO: remove once adding form is done
 const categories = [
   Category.DRY_SOILS,
   Category.WET_SOILS,
@@ -21,7 +20,12 @@ const categories = [
   Category.BIODIVERSITY,
 ];
 
-export const MapContent: React.FC<Props> = ({}) => {
+type Props = {
+  mapRef: React.RefObject<MapView>;
+  onMapMove: () => void;
+};
+
+export const MapContent: React.FC<Props> = ({ mapRef, onMapMove }) => {
   const { styles } = useStyles(stylesheet);
   const { data, status, error } = useGetAllSurveys();
   const { mutate } = useCreateSurvey();
@@ -30,6 +34,7 @@ export const MapContent: React.FC<Props> = ({}) => {
   return (
     <View style={styles.container}>
       <MapView
+        ref={mapRef}
         style={styles.map}
         onLongPress={(event) => {
           mutate({
@@ -42,7 +47,11 @@ export const MapContent: React.FC<Props> = ({}) => {
             solution: 'test',
           });
         }}
-        mapType="hybrid"
+        mapType='hybrid'
+        showsPointsOfInterest={false}
+        showsUserLocation={true}
+        showsCompass={false}
+        onTouchMove={onMapMove}
       >
         {data?.map((survey) => (
           <Marker

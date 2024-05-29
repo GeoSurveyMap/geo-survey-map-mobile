@@ -5364,6 +5364,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-location@npm:~17.0.1":
+  version: 17.0.1
+  resolution: "expo-location@npm:17.0.1"
+  peerDependencies:
+    expo: "*"
+  checksum: 10c0/b73ab52c3ad91ac3f0457b3ef5fd8c1260288f680a51e75db0d6c2fd4a15e8450b8a7ec405788cffdacc7b0dd7f62318916122cdb377e07697af896163e66a7d
+  languageName: node
+  linkType: hard
+
 "expo-manifests@npm:~0.14.0":
   version: 0.14.2
   resolution: "expo-manifests@npm:0.14.2"
@@ -5928,6 +5937,7 @@ __metadata:
     expo-dev-client: "npm:~4.0.14"
     expo-font: "npm:~12.0.5"
     expo-linear-gradient: "npm:~13.0.2"
+    expo-location: "npm:~17.0.1"
     expo-status-bar: "npm:~1.12.1"
     geo-survey-map-shared-modules: "https://github.com/GeoSurveyMap/geo-survey-map-shared-modules.git"
     husky: "npm:^9.0.11"
@@ -5947,11 +5957,11 @@ __metadata:
 
 "geo-survey-map-shared-modules@https://github.com/GeoSurveyMap/geo-survey-map-shared-modules.git":
   version: 0.0.1
-  resolution: "geo-survey-map-shared-modules@https://github.com/GeoSurveyMap/geo-survey-map-shared-modules.git#commit=b5bd39b95d232f720a8c9fab13ca329f60d32149"
+  resolution: "geo-survey-map-shared-modules@https://github.com/GeoSurveyMap/geo-survey-map-shared-modules.git#commit=271d6a1dad4c29b1012a8a14d1bb2e1c45fcb579"
   dependencies:
     "@tanstack/react-query": "npm:^5.36.0"
     axios: "npm:^1.6.8"
-  checksum: 10c0/5b7895e6184d5efc555db025a9f11b8b8d861af4274c250ab6a0a38772b9f1db6b31fe706217c50faa662af4611361143f2b451ade3691dc5ca423370518c2e5
+  checksum: 10c0/2c8e0f7504cab2d2cf605f6e5cd6d90aed9c8ebaeae98f9cd2c75fcf34502d8b140f271db933a4094cce66dd8ef8255d0f5ebcbb8e8629d472e34e63aeacc0a5
   languageName: node
   linkType: hard
 
