@@ -14,7 +14,7 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <SafeAreaProvider style={{ flex: 1 }}>
-        <StatusBar style="auto" />
+        <StatusBar style='auto' />
         <Map />
       </SafeAreaProvider>
     </QueryClientProvider>

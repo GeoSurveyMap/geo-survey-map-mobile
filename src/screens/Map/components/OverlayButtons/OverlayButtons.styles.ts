@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { createStyleSheet } from 'react-native-unistyles';
 
-export const stylesheet = createStyleSheet((theme) => ({
+export const stylesheet = createStyleSheet(() => ({
   container: {
     ...StyleSheet.absoluteFillObject,
     zIndex: 10,

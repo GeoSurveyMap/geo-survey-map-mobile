@@ -7,9 +7,7 @@ import { ButtonType, MapButton } from '@/components/RectButton/MapButton';
 
 import { stylesheet } from './OverlayButtons.styles';
 
-type Props = {};
-
-export const OverlayButtons: React.FC<Props> = ({}) => {
+export const OverlayButtons: React.FC = () => {
   const { styles } = useStyles(stylesheet);
 
   return (

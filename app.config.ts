@@ -6,7 +6,7 @@ const config: ExpoConfig = {
   slug: 'geo-survey-map',
   version: process.env.EXPO_PUBLIC_APP_VERSION || '0.0.0',
   orientation: 'portrait',
-  userInterfaceStyle: 'light',
+  userInterfaceStyle: 'automatic',
   splash: {
     resizeMode: 'contain',
     backgroundColor: '#ffffff',
