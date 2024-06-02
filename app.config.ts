@@ -41,6 +41,13 @@ const config: ExpoConfig = {
         locationWhenInUsePermission: 'Allow $(PRODUCT_NAME) to use your location.',
       },
     ],
+    'expo-secure-store',
+    [
+      './plugins/expo-plugin-geo-api-key',
+      {
+        apiKey: process.env.EXPO_PUBLIC_GOOLE_API_KEY,
+      },
+    ],
   ],
 };
 
