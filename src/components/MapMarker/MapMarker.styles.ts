@@ -1,12 +1,12 @@
 import { createStyleSheet } from 'react-native-unistyles';
 
-const size = 30;
+const SIZE = 30;
 
 export const stylesheet = createStyleSheet(() => ({
   marker: {
-    height: size,
-    width: size,
-    borderRadius: size / 2,
+    height: SIZE,
+    width: SIZE,
+    borderRadius: SIZE / 2,
     overflow: 'hidden',
     justifyContent: 'center',
     alignItems: 'center',

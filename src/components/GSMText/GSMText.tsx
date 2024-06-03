@@ -9,7 +9,8 @@ import { appTypography } from '@/styles/typography';
 import type { TextProps } from 'react-native';
 
 interface Props extends TextProps {
-  textStyle: TextType;
+  textStyle?: TextType;
+  color?: string;
 }
 
 /**
@@ -17,9 +18,9 @@ interface Props extends TextProps {
  * @param textStyle - Text style. See `TextType` enum.
  * @returns React element.
  */
-export const GSMText = memo<Props>(({ textStyle = TextType.P, style, ...rest }) => {
+export const GSMText = memo<Props>(({ textStyle = TextType.P, color, style, ...rest }) => {
   const { theme } = useStyles();
-  return <Text style={[appTypography[textStyle], { color: theme.text }, style]} {...rest} />;
+  return <Text style={[appTypography[textStyle], { color: color || theme.text }, style]} {...rest} />;
 });
 
 GSMText.displayName = 'GSMText';

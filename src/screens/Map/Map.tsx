@@ -1,15 +1,13 @@
 import * as Location from 'expo-location';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 
 import { BlurInsets } from '@/screens/Map/components/BlurInsets/BlurInsets';
 
 import { stylesheet } from './Map.styles';
-import { MapContent } from './components/MapContent/MapContent';
+import { MapContent, useMap } from './components/MapContent/MapContent';
 import { OverlayButtons } from './components/OverlayButtons/OverlayButtons';
-
-import type MapView from 'react-native-maps';
 
 const requestLocationPermission = async () => {
   const { status } = await Location.requestForegroundPermissionsAsync();
@@ -18,7 +16,7 @@ const requestLocationPermission = async () => {
 
 export const Map: React.FC = () => {
   const { styles } = useStyles(stylesheet);
-  const mapRef = useRef<MapView>(null);
+  const { mapRef } = useMap();
   const [isUserFocused, setIsUserFocused] = useState(false);
 
   const handleUserFocus = async () => {
@@ -42,7 +40,7 @@ export const Map: React.FC = () => {
   return (
     <View style={styles.container}>
       <BlurInsets />
-      <MapContent mapRef={mapRef} onMapMove={handleUserUnfocused} />
+      <MapContent onMapMove={handleUserUnfocused} />
       <OverlayButtons isUserFocused={isUserFocused} onUserFocus={handleUserFocus} />
     </View>
   );

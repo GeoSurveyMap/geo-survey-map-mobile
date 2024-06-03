@@ -6,6 +6,8 @@ import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 
+import { i18n } from '@/libs/i18n';
+
 import { GSMText } from '../GSMText/GSMText';
 
 import { stylesheet } from './RectButton.styles';
@@ -25,10 +27,10 @@ export enum ButtonType {
 }
 
 const buttonTitle: Record<ButtonType, string | null> = {
-  [ButtonType.FILTER]: 'Filtry',
+  [ButtonType.FILTER]: i18n.t('filters'),
   [ButtonType.LOCALIZE]: null,
-  [ButtonType.LOGIN]: 'Zaloguj',
-  [ButtonType.PROFILE]: 'Profil',
+  [ButtonType.LOGIN]: i18n.t('login'),
+  [ButtonType.PROFILE]: i18n.t('profile'),
 };
 
 const buttonIcon: Record<ButtonType, React.FunctionComponent<React.SVGAttributes<SVGElement>>> = {

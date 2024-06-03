@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 
 import { ButtonType, MapButton } from '@/components/RectButton/MapButton';
-import { useAuth } from '@/libs/kinde';
+import { useAuth } from '@/hooks/useAuth';
 
 import { stylesheet } from './OverlayButtons.styles';
 
