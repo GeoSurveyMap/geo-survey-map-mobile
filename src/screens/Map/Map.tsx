@@ -4,9 +4,10 @@ import { View } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 
 import { BlurInsets } from '@/screens/Map/components/BlurInsets/BlurInsets';
+import { useMap } from '@/store/useMap';
 
 import { stylesheet } from './Map.styles';
-import { MapContent, useMap } from './components/MapContent/MapContent';
+import { MapContent } from './components/MapContent/MapContent';
 import { OverlayButtons } from './components/OverlayButtons/OverlayButtons';
 
 const requestLocationPermission = async () => {

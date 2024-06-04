@@ -1,11 +1,10 @@
 import { registerSheet } from 'react-native-actions-sheet';
 
-import { FormSheet } from '@/components/FormSheet/FormSheet';
-import { LoginSheet } from '@/components/LoginSheet/LoginSheet';
+import { FormSheet } from '@/screens/sheets/FormSheet/FormSheet';
+import { LoginSheet } from '@/screens/sheets/LoginSheet/LoginSheet';
 
-import type { FormStepName } from '@/components/FormSheet/FormSheet';
 import type { Location } from 'geo-survey-map-shared-modules';
-import type { RouteDefinition, SheetDefinition } from 'react-native-actions-sheet';
+import type { SheetDefinition } from 'react-native-actions-sheet';
 
 export enum Sheet {
   Login = 'login-sheet',
@@ -23,14 +22,6 @@ declare module 'react-native-actions-sheet' {
     [Sheet.Form]: SheetDefinition<{
       payload: {
         location: Location;
-      };
-      routes: {
-        [FormStepName.CHOOSE_CATEGORY]: RouteDefinition;
-        [FormStepName.CHOOSE_AREA]: RouteDefinition;
-        [FormStepName.ADD_PHOTO]: RouteDefinition;
-        [FormStepName.ADD_DETAILS]: RouteDefinition;
-        [FormStepName.SUCCESS]: RouteDefinition;
-        [FormStepName.ERROR]: RouteDefinition;
       };
     }>;
   }

@@ -6,12 +6,11 @@ import { SheetManager } from 'react-native-actions-sheet';
 import { useStyles } from 'react-native-unistyles';
 
 import { GSMButton } from '@/components/GSMButton/GSMButton';
+import { GSMButtonStyle } from '@/components/GSMButton/GSMButton.types';
+import { GSMSheet } from '@/components/GSMSheet/GSMSheet';
+import { GSMText } from '@/components/GSMText/GSMText';
 import { useAuth } from '@/hooks/useAuth';
 import { Sheet } from '@/libs/sheets';
-
-import { GSMButtonStyle } from '../GSMButton/GSMButton.types';
-import { GSMSheet } from '../GSMSheet/GSMSheet';
-import { GSMText } from '../GSMText/GSMText';
 
 import { stylesheet } from './LoginSheet.styles';
 

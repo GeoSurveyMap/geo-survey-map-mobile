@@ -6006,11 +6006,11 @@ __metadata:
 
 "geo-survey-map-shared-modules@https://github.com/GeoSurveyMap/geo-survey-map-shared-modules.git":
   version: 0.0.1
-  resolution: "geo-survey-map-shared-modules@https://github.com/GeoSurveyMap/geo-survey-map-shared-modules.git#commit=846e03f0ae625b2a3eb3f3e58d65cd6ea23daf29"
+  resolution: "geo-survey-map-shared-modules@https://github.com/GeoSurveyMap/geo-survey-map-shared-modules.git#commit=a23576b180df9be9a2d1a46c17580d1c2a61d578"
   dependencies:
     "@tanstack/react-query": "npm:^5.36.0"
     axios: "npm:^1.6.8"
-  checksum: 10c0/b2a704bfc0d402bedb882a938f7d42de65f48ee2611992b745963623485db3d7999d289c3f9f8b1ee8c11b6d88106622177608a347fd620d4ead4aacbb7f80c6
+  checksum: 10c0/d1974ab2b016f3fbbebebad77b171366522693e4e747c055be0704ecb15677393b52df7d89122a1dc900bc063c8564faa958beef04f34261acb68da0f32ed601
   languageName: node
   linkType: hard
 

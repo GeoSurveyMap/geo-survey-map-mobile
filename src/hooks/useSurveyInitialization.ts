@@ -1,32 +1,16 @@
 import { SheetManager } from 'react-native-actions-sheet';
-import { create } from 'zustand';
 
 import { Sheet } from '@/libs/sheets';
-import { useMap } from '@/screens/Map/components/MapContent/MapContent';
+import { useFormStore } from '@/store/useFormStore';
+import { useMap } from '@/store/useMap';
 
 import { useAuth } from './useAuth';
 
-import type { Category, Location } from 'geo-survey-map-shared-modules';
-
-type FormPoint = {
-  location: Location | null;
-  category: Category | undefined;
-  setLocation: (location: Location | null) => void;
-  setCategory: (category: Category | undefined) => void;
-  reset: () => void;
-};
-
-export const useFormPoint = create<FormPoint>((set) => ({
-  location: null,
-  category: undefined,
-  setLocation: (location) => set({ location }),
-  setCategory: (category) => set({ category }),
-  reset: () => set({ location: null, category: undefined }),
-}));
+import type { Location } from 'geo-survey-map-shared-modules';
 
 export const useSurveyFormInitialization = () => {
   const { isAuthenticated } = useAuth();
-  const { setLocation } = useFormPoint();
+  const { setLocation, setLocationName } = useFormStore();
   const { mapRef } = useMap();
 
   const triggerFormSheet = async (location: Location) => {
@@ -41,9 +25,12 @@ export const useSurveyFormInitialization = () => {
       longitudeDelta: 0.02,
     });
     setLocation(location);
-    return SheetManager.show(Sheet.Form, {
+    SheetManager.show(Sheet.Form, {
       payload: { location },
     });
+    const locationName = await mapRef.current?.addressForCoordinate({ latitude: location.x, longitude: location.y });
+    if (!locationName) return;
+    setLocationName(locationName.name);
   };
 
   return { triggerFormSheet };

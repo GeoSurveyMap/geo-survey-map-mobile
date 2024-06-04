@@ -3,20 +3,13 @@ import React from 'react';
 import { View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { useStyles } from 'react-native-unistyles';
-import { create } from 'zustand';
 
 import { MapMarker } from '@/components/MapMarker/MapMarker';
-import { useFormPoint, useSurveyFormInitialization } from '@/hooks/useSurveyInitialization';
+import { useSurveyFormInitialization } from '@/hooks/useSurveyInitialization';
+import { useFormStore } from '@/store/useFormStore';
+import { useMap } from '@/store/useMap';
 
 import { stylesheet } from './MapContent.styles';
-
-type MapStore = {
-  mapRef: React.RefObject<MapView>;
-};
-
-export const useMap = create<MapStore>(() => ({
-  mapRef: React.createRef<MapView>(),
-}));
 
 type Props = {
   onMapMove: () => void;
@@ -27,7 +20,7 @@ export const MapContent: React.FC<Props> = ({ onMapMove }) => {
   const { data } = useGetAllSurveys();
   const { triggerFormSheet } = useSurveyFormInitialization();
   const { mapRef } = useMap();
-  const { location, category } = useFormPoint();
+  const { location, category } = useFormStore();
 
   return (
     <View style={styles.container}>

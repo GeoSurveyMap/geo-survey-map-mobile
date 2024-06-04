@@ -1,16 +1,6 @@
-import { create } from 'zustand';
-
 import { kindeClient } from '@/libs/kinde';
+import { useAuthStore } from '@/store/useAuthStore';
 
-type AuthStore = {
-  isAuthenticated: boolean;
-  setIsAuthenticated: (isAuthenticated: boolean) => void;
-};
-
-const useAuthStore = create<AuthStore>((set) => ({
-  isAuthenticated: false,
-  setIsAuthenticated: (isAuthenticated: boolean) => set({ isAuthenticated }),
-}));
 kindeClient.isAuthenticated.then((isAuthenticated) => useAuthStore.setState({ isAuthenticated }));
 
 export const useAuth = () => {
