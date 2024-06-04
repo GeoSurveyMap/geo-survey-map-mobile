@@ -14,7 +14,7 @@ interface Props extends TextProps {
 }
 
 /**
- * Custom text component for Metis, with different styles. It exends `Text` component.
+ * Custom text component with different styles, that exends `Text` component.
  * @param textStyle - Text style. See `TextType` enum.
  * @returns React element.
  */
