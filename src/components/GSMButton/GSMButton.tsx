@@ -32,7 +32,7 @@ const getTextColor = (buttonStyle: GSMButtonStyle, theme: Theme) => {
 };
 
 /**
- * Custom button component for Metis, with different styles. It exends `Pressable` component.
+ * Custom button component with different styles, that exends `Pressable` component.
  * @param title - Button title.
  * @param buttonStyle - Button style. See `GSMButtonStyle` enum.
  * @returns React element.
