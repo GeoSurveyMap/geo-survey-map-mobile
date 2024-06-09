@@ -2,9 +2,9 @@ import 'ts-node/register';
 import type { ExpoConfig } from 'expo/config';
 
 const config: ExpoConfig = {
-  name: process.env.EXPO_PUBLIC_APP_NAME || 'Geo Survey Map',
+  name: process.env.EXPO_PUBLIC_APP_NAME,
   slug: 'geo-survey-map',
-  version: process.env.EXPO_PUBLIC_APP_VERSION || '0.0.0',
+  version: process.env.EXPO_PUBLIC_APP_VERSION,
   orientation: 'portrait',
   userInterfaceStyle: 'automatic',
   scheme: 'geosurveymap',

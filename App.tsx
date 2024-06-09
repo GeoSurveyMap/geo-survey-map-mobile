@@ -12,7 +12,7 @@ import './src/libs/sheets';
 import { i18n } from '@/libs/i18n';
 import { Map } from '@/screens/Map/Map';
 
-updateApiClient.setBaseURL(process.env.EXPO_PUBLIC_API_URL || '');
+updateApiClient.setBaseURL(process.env.EXPO_PUBLIC_API_URL);
 
 // eslint-disable-next-line import/no-default-export
 export default function App() {
