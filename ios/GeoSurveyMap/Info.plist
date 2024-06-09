@@ -58,7 +58,12 @@
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>Allow $(PRODUCT_NAME) to use your location.</string>
     <key>UIAppFonts</key>
-    <array/>
+    <array>
+      <string>Montserrat-Regular.ttf</string>
+      <string>Montserrat-Bold.ttf</string>
+      <string>Montserrat-SemiBold.ttf</string>
+      <string>Montserrat-Medium.ttf</string>
+    </array>
     <key>UILaunchStoryboardName</key>
     <string>SplashScreen</string>
     <key>UIRequiredDeviceCapabilities</key>
