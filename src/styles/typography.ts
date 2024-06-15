@@ -4,7 +4,7 @@ import type { TextStyle } from 'react-native';
 
 const { size, fontFamily, weight, fontWeight } = typography;
 
-const createFontNameForWeight = (weight: keyof typeof fontWeight): string => {
+export const createFontNameForWeight = (weight: keyof typeof fontWeight): string => {
   switch (weight) {
     case '400':
       return `${fontFamily}-Regular`;

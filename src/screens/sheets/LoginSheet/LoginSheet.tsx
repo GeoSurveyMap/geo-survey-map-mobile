@@ -10,7 +10,7 @@ import { GSMButtonStyle } from '@/components/GSMButton/GSMButton.types';
 import { GSMSheet } from '@/components/GSMSheet/GSMSheet';
 import { GSMText } from '@/components/GSMText/GSMText';
 import { useAuth } from '@/hooks/useAuth';
-import { Sheet } from '@/libs/sheets';
+import { Sheet } from '@/types/sheets';
 
 import { stylesheet } from './LoginSheet.styles';
 

@@ -1,18 +1,17 @@
 import { TextType, useCreateSurvey } from 'geo-survey-map-shared-modules';
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { LayoutAnimation, UIManager, View } from 'react-native';
+import { Keyboard, LayoutAnimation, Pressable, UIManager, View } from 'react-native';
 import { SheetManager, type SheetProps } from 'react-native-actions-sheet';
 import { useStyles } from 'react-native-unistyles';
 
-import { Sheet } from '@/libs/sheets';
+import { GSMButton } from '@/components/GSMButton/GSMButton';
+import { GSMButtonStyle } from '@/components/GSMButton/GSMButton.types';
+import { GSMSheet } from '@/components/GSMSheet/GSMSheet';
+import { GSMText } from '@/components/GSMText/GSMText';
 import { useFormStore } from '@/store/useFormStore';
+import { Sheet } from '@/types/sheets';
 import { isAndroid } from '@/utils/platform';
-
-import { GSMButton } from '../../../components/GSMButton/GSMButton';
-import { GSMButtonStyle } from '../../../components/GSMButton/GSMButton.types';
-import { GSMSheet } from '../../../components/GSMSheet/GSMSheet';
-import { GSMText } from '../../../components/GSMText/GSMText';
 
 import { stylesheet } from './FormSheet.styles';
 import { FormProgressIndicator } from './components/FormProgressIndicator/FormProgressIndicator';
@@ -20,6 +19,7 @@ import { AddDescription } from './steps/AddDescription/AddDescription';
 import { AddPhoto } from './steps/AddPhoto/AddPhoto';
 import { ChooseArea } from './steps/ChooseArea/ChooseArea';
 import { ChooseCategory } from './steps/ChooseCategory/ChooseCategory';
+import { Success } from './steps/Success/Success';
 
 if (isAndroid && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -30,6 +30,7 @@ export enum FormStepName {
   CHOOSE_AREA = 'CHOOSE_AREA',
   ADD_PHOTO = 'ADD_PHOTO',
   ADD_DETAILS = 'ADD_DETAILS',
+  SUCCESS = 'SUCCESS',
 }
 
 const Title = ({ currentStage }: { currentStage: FormStepName }) => {
@@ -37,13 +38,13 @@ const Title = ({ currentStage }: { currentStage: FormStepName }) => {
   const title = () => {
     switch (currentStage) {
       case FormStepName.CHOOSE_CATEGORY:
-        return t('addPointForm.describtion.title');
+        return t('addPointForm.chooseCategory.title');
       case FormStepName.CHOOSE_AREA:
         return t('addPointForm.affectedArea.title');
       case FormStepName.ADD_PHOTO:
         return t('addPointForm.addPhoto.title');
       case FormStepName.ADD_DETAILS:
-        return t('addPointForm.describtion.title');
+        return t('addPointForm.description.title');
     }
   };
 
@@ -56,11 +57,11 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
   const { t } = useTranslation();
   const { mutateAsync } = useCreateSurvey();
 
-  const [currentStage, setCurrentStage] = React.useState(FormStepName.CHOOSE_CATEGORY);
+  const [currentStage, setCurrentStage] = useState(FormStepName.CHOOSE_CATEGORY);
 
   const handleStageChange = (stage: FormStepName) => {
     LayoutAnimation.configureNext({
-      ...LayoutAnimation.Presets.spring,
+      ...LayoutAnimation.Presets.linear,
       update: {
         type: 'easeInEaseOut',
         property: 'scaleXY',
@@ -87,7 +88,10 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
         handleStageChange(FormStepName.ADD_DETAILS);
         break;
       case FormStepName.ADD_DETAILS:
-        handleStageChange(FormStepName.ADD_DETAILS);
+        onSubmit();
+        break;
+      case FormStepName.SUCCESS:
+        SheetManager.hide(Sheet.Form);
         break;
     }
   };
@@ -114,14 +118,15 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
     if (!category || !location) return;
     const response = await mutateAsync({
       category,
-      description: locationName,
-      locationRequest: location,
+      description: '',
+      locationRequest: { ...location, name: locationName },
       solution: problemDescription,
+      affectedArea: radius || 0,
     });
 
     if (response) {
       reset();
-      SheetManager.hide(Sheet.Form);
+      handleStageChange(FormStepName.SUCCESS);
     }
   };
 
@@ -135,6 +140,8 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
         return <AddPhoto />;
       case FormStepName.ADD_DETAILS:
         return <AddDescription />;
+      case FormStepName.SUCCESS:
+        return <Success />;
     }
   };
 
@@ -173,8 +180,17 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
         return (
           <>
             <GSMButton onPress={onPrevious} title={t('back')} buttonStyle={GSMButtonStyle.SOFT_DESTRUCTIVE} />
-            <GSMButton onPress={onSubmit} title={t('addPoint')} buttonStyle={GSMButtonStyle.PRIMARY} />
+            <GSMButton onPress={onNext} title={t('addPoint')} buttonStyle={GSMButtonStyle.PRIMARY} />
           </>
+        );
+      case FormStepName.SUCCESS:
+        return (
+          <GSMButton
+            onPress={onNext}
+            title={t('close')}
+            buttonStyle={GSMButtonStyle.SECONDARY}
+            style={styles.fullButton}
+          />
         );
     }
   };
@@ -192,20 +208,23 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
       enableRouterBackNavigation={true}
       defaultOverlayOpacity={0}
       containerStyle={{ paddingBottom: 0 }}
-      openAnimationConfig={{ delay: 0 }}
     >
-      <View style={styles.container}>
+      <Pressable style={styles.container} onPress={Keyboard.dismiss}>
         <View style={styles.contentWrapper}>
-          <Title currentStage={currentStage} />
-          <FormProgressIndicator
-            currentStage={Array.from(Object.values(FormStepName)).indexOf(currentStage)}
-            stages={stagesProgress}
-          />
+          {currentStage !== FormStepName.SUCCESS && (
+            <>
+              <Title currentStage={currentStage} />
+              <FormProgressIndicator
+                currentStage={Array.from(Object.values(FormStepName)).indexOf(currentStage)}
+                stages={stagesProgress}
+              />
+            </>
+          )}
           {content()}
         </View>
 
         <View style={styles.buttonsContainer}>{buttons()}</View>
-      </View>
+      </Pressable>
     </GSMSheet>
   );
 };

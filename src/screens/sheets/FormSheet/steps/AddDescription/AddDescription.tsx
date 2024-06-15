@@ -12,14 +12,14 @@ export const AddDescription: React.FC<Props> = ({}) => {
   return (
     <>
       <GSMInput
-        label={t('addPointForm.describtion.placeName.label')}
-        placeholder={t('addPointForm.describtion.placeName.placeholder')}
+        label={t('addPointForm.description.placeName.label')}
+        placeholder={t('addPointForm.description.placeName.placeholder')}
         value={locationName}
         onChangeText={setLocationName}
       />
       <GSMInput
-        label={t('addPointForm.describtion.problemDescription.label')}
-        placeholder={t('addPointForm.describtion.problemDescription.placeholder')}
+        label={t('addPointForm.description.problemDescription.label')}
+        placeholder={t('addPointForm.description.problemDescription.placeholder')}
         multiline
         value={problemDescription}
         onChangeText={setProblemDescription}

@@ -14,7 +14,6 @@ declare module 'i18next' {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 export type LocalizedLabelKey = ParseKeys<'pl', {}, undefined>;
 
-export type MetisTFunction = TFunction<'pl', undefined>;
+export type GSMTFunction = TFunction<'pl', undefined>;

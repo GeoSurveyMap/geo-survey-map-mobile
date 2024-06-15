@@ -22,7 +22,7 @@ type FormStore = {
 export const useFormStore = create<FormStore>((set) => ({
   location: null,
   category: undefined,
-  radius: undefined,
+  radius: 0,
   photoUri: undefined,
   locationName: '',
   problemDescription: '',
@@ -37,7 +37,7 @@ export const useFormStore = create<FormStore>((set) => ({
     set({
       location: null,
       category: undefined,
-      radius: undefined,
+      radius: 0,
       photoUri: undefined,
       locationName: '',
       problemDescription: '',
