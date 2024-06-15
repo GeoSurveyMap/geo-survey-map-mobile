@@ -11,6 +11,11 @@ export const stylesheet = createStyleSheet(() => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  markerFocused: {
+    height: SIZE * 1.5,
+    width: SIZE * 1.5,
+    borderRadius: (SIZE * 1.5) / 2,
+  },
   background: {
     position: 'absolute',
     left: 0,

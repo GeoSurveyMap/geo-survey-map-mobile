@@ -9,4 +9,5 @@ export const stylesheet = createStyleSheet((theme) => ({
     maxHeight: Dimensions.get('window').height * 0.4,
   },
   buttonsContainer: { flexDirection: 'row', justifyContent: 'space-between' },
+  fullButton: { width: '100%' },
 }));
