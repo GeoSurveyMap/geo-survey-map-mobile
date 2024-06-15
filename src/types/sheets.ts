@@ -14,4 +14,5 @@ declare module 'react-native-actions-sheet' {
 export enum Sheet {
   Login = 'login-sheet',
   Form = 'form-sheet',
+  Filters = 'filters-sheet',
 }
