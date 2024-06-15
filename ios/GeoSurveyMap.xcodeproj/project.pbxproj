@@ -10,37 +10,37 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		1FA9DE60E1574E278AF34052 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1986AC15F0B44669119807C /* Montserrat-Regular.ttf */; };
-		2362CFA82373411F87C48715 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C85BB9F7CF2B46EE9DA90227 /* Montserrat-Medium.ttf */; };
-		29745946474AF15373AFDA25 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B6A29D05FD10BD6BE9AE0DCD /* PrivacyInfo.xcprivacy */; };
+		27201466668E49FAB20FDADB /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3971DB0FA5A492EB7B841AA /* Montserrat-Bold.ttf */; };
+		2E95DA22CB14DCB158FFDA0E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E7E5294DD5CB985BCAA7EE69 /* PrivacyInfo.xcprivacy */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		6FDBA62F0A464519ABDF2DB1 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 818E6BB92E5C421187D4860F /* Montserrat-Bold.ttf */; };
-		7731543C9930452C8A1F447E /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE6DE37328A44718AA011202 /* Montserrat-SemiBold.ttf */; };
+		75C2FFF6E56C4467A3D7C65E /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 566CF45E3AD9463C9290256A /* Montserrat-SemiBold.ttf */; };
+		91F3304924BB4CCA84B82713 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9ABB09C026C4931851CAECF /* Montserrat-Medium.ttf */; };
 		96905EF65AED1B983A6B3ABC /* libPods-GeoSurveyMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-GeoSurveyMap.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
+		B1A0BCD171DC40FC8AC0E124 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6244EDCF3945D2B189EA3D /* noop-file.swift */; };
+		B32264E4FA6248609E710B10 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09F5A8628CCC4F0B9BD4F7B8 /* Montserrat-Regular.ttf */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		C1DA2D3A46074DEE818E5BCD /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F2E36647AC42C9B143D665 /* noop-file.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09F5A8628CCC4F0B9BD4F7B8 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../node_modules/geo-survey-map-shared-modules/lib/assets/fonts/Montserrat/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* GeoSurveyMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoSurveyMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = GeoSurveyMap/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = GeoSurveyMap/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GeoSurveyMap/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = GeoSurveyMap/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = GeoSurveyMap/main.m; sourceTree = "<group>"; };
+		1E6244EDCF3945D2B189EA3D /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "GeoSurveyMap/noop-file.swift"; sourceTree = "<group>"; };
+		566CF45E3AD9463C9290256A /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-SemiBold.ttf"; path = "../node_modules/geo-survey-map-shared-modules/lib/assets/fonts/Montserrat/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-GeoSurveyMap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GeoSurveyMap.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5977BB065CAF4AC69C085909 /* GeoSurveyMap-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "GeoSurveyMap-Bridging-Header.h"; path = "GeoSurveyMap/GeoSurveyMap-Bridging-Header.h"; sourceTree = "<group>"; };
 		6C2E3173556A471DD304B334 /* Pods-GeoSurveyMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoSurveyMap.debug.xcconfig"; path = "Target Support Files/Pods-GeoSurveyMap/Pods-GeoSurveyMap.debug.xcconfig"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-GeoSurveyMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoSurveyMap.release.xcconfig"; path = "Target Support Files/Pods-GeoSurveyMap/Pods-GeoSurveyMap.release.xcconfig"; sourceTree = "<group>"; };
-		818E6BB92E5C421187D4860F /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Bold.ttf"; path = "../node_modules/geo-survey-map-shared-modules/lib/assets/fonts/Montserrat/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		A289CE89C71B4811AE668420 /* GeoSurveyMap-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "GeoSurveyMap-Bridging-Header.h"; path = "GeoSurveyMap/GeoSurveyMap-Bridging-Header.h"; sourceTree = "<group>"; };
+		A3971DB0FA5A492EB7B841AA /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Bold.ttf"; path = "../node_modules/geo-survey-map-shared-modules/lib/assets/fonts/Montserrat/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = GeoSurveyMap/SplashScreen.storyboard; sourceTree = "<group>"; };
-		B6A29D05FD10BD6BE9AE0DCD /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = GeoSurveyMap/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		BE6DE37328A44718AA011202 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-SemiBold.ttf"; path = "../node_modules/geo-survey-map-shared-modules/lib/assets/fonts/Montserrat/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
-		C1986AC15F0B44669119807C /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../node_modules/geo-survey-map-shared-modules/lib/assets/fonts/Montserrat/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
-		C4F2E36647AC42C9B143D665 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "GeoSurveyMap/noop-file.swift"; sourceTree = "<group>"; };
-		C85BB9F7CF2B46EE9DA90227 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Medium.ttf"; path = "../node_modules/geo-survey-map-shared-modules/lib/assets/fonts/Montserrat/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		C9ABB09C026C4931851CAECF /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Medium.ttf"; path = "../node_modules/geo-survey-map-shared-modules/lib/assets/fonts/Montserrat/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		E7E5294DD5CB985BCAA7EE69 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = GeoSurveyMap/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-GeoSurveyMap/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,9 +67,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				C4F2E36647AC42C9B143D665 /* noop-file.swift */,
-				5977BB065CAF4AC69C085909 /* GeoSurveyMap-Bridging-Header.h */,
-				B6A29D05FD10BD6BE9AE0DCD /* PrivacyInfo.xcprivacy */,
+				1E6244EDCF3945D2B189EA3D /* noop-file.swift */,
+				A289CE89C71B4811AE668420 /* GeoSurveyMap-Bridging-Header.h */,
+				E7E5294DD5CB985BCAA7EE69 /* PrivacyInfo.xcprivacy */,
 			);
 			name = GeoSurveyMap;
 			sourceTree = "<group>";
@@ -99,7 +99,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
 				D7E4C46ADA2E9064B798F356 /* ExpoModulesProviders */,
-				A974367093C2494E92D4AB89 /* Resources */,
+				C8F2553622E140639200DC3E /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -122,18 +122,6 @@
 			name = GeoSurveyMap;
 			sourceTree = "<group>";
 		};
-		A974367093C2494E92D4AB89 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				C1986AC15F0B44669119807C /* Montserrat-Regular.ttf */,
-				818E6BB92E5C421187D4860F /* Montserrat-Bold.ttf */,
-				BE6DE37328A44718AA011202 /* Montserrat-SemiBold.ttf */,
-				C85BB9F7CF2B46EE9DA90227 /* Montserrat-Medium.ttf */,
-			);
-			name = Resources;
-			path = "";
-			sourceTree = "<group>";
-		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +129,18 @@
 			);
 			name = Supporting;
 			path = GeoSurveyMap/Supporting;
+			sourceTree = "<group>";
+		};
+		C8F2553622E140639200DC3E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				09F5A8628CCC4F0B9BD4F7B8 /* Montserrat-Regular.ttf */,
+				A3971DB0FA5A492EB7B841AA /* Montserrat-Bold.ttf */,
+				566CF45E3AD9463C9290256A /* Montserrat-SemiBold.ttf */,
+				C9ABB09C026C4931851CAECF /* Montserrat-Medium.ttf */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		D65327D7A22EEC0BE12398D9 /* Pods */ = {
@@ -168,13 +168,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "GeoSurveyMap" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				4F9EB15D2591CC20A4E427E6 /* [Expo] Configure project */,
+				EF525CA0BE2716B9F03427C2 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				804229DC6039BB27498F0C64 /* [CP] Embed Pods Frameworks */,
+				62B8BF074F396C4850E81C90 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -195,6 +195,8 @@
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1250;
+						DevelopmentTeam = "N7MMJJLD2W";
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -224,11 +226,11 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				1FA9DE60E1574E278AF34052 /* Montserrat-Regular.ttf in Resources */,
-				6FDBA62F0A464519ABDF2DB1 /* Montserrat-Bold.ttf in Resources */,
-				7731543C9930452C8A1F447E /* Montserrat-SemiBold.ttf in Resources */,
-				2362CFA82373411F87C48715 /* Montserrat-Medium.ttf in Resources */,
-				29745946474AF15373AFDA25 /* PrivacyInfo.xcprivacy in Resources */,
+				B32264E4FA6248609E710B10 /* Montserrat-Regular.ttf in Resources */,
+				27201466668E49FAB20FDADB /* Montserrat-Bold.ttf in Resources */,
+				75C2FFF6E56C4467A3D7C65E /* Montserrat-SemiBold.ttf in Resources */,
+				91F3304924BB4CCA84B82713 /* Montserrat-Medium.ttf in Resources */,
+				2E95DA22CB14DCB158FFDA0E /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +274,49 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4F9EB15D2591CC20A4E427E6 /* [Expo] Configure project */ = {
+		62B8BF074F396C4850E81C90 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GeoSurveyMap/Pods-GeoSurveyMap-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GeoSurveyMap/Pods-GeoSurveyMap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GeoSurveyMap/Pods-GeoSurveyMap-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/RCTI18nStrings.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCTI18nStrings.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GeoSurveyMap/Pods-GeoSurveyMap-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF525CA0BE2716B9F03427C2 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -291,52 +335,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-GeoSurveyMap/expo-configure-project.sh\"\n";
 		};
-		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GeoSurveyMap/Pods-GeoSurveyMap-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/RCTI18nStrings.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-launcher/EXDevLauncher.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-menu/EXDevMenu.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCTI18nStrings.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevLauncher.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevMenu.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GeoSurveyMap/Pods-GeoSurveyMap-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		804229DC6039BB27498F0C64 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GeoSurveyMap/Pods-GeoSurveyMap-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GeoSurveyMap/Pods-GeoSurveyMap-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -347,7 +345,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
-				C1DA2D3A46074DEE818E5BCD /* noop-file.swift in Sources */,
+				B1A0BCD171DC40FC8AC0E124 /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +382,9 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
+				DEVELOPMENT_TEAM = "N7MMJJLD2W";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 			};
 			name = Debug;
 		};
@@ -411,6 +412,9 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
+				DEVELOPMENT_TEAM = "N7MMJJLD2W";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 			};
 			name = Release;
 		};
