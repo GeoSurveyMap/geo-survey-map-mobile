@@ -23,6 +23,7 @@ export const AddDescription: React.FC<Props> = ({}) => {
         multiline
         value={problemDescription}
         onChangeText={setProblemDescription}
+        maxLength={255} // TODO: do wywalenia
       />
     </>
   );

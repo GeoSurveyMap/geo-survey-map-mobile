@@ -166,6 +166,9 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    implementation project(':react-native-keychain')
+    implementation project(':react-native-inappbrowser-reborn')
 }
 
 apply from: new File(["node", "--print", "require.resolve('@react-native-community/cli-platform-android/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim(), "../native_modules.gradle");

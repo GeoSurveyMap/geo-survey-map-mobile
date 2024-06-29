@@ -8,6 +8,6 @@ export const stylesheet = createStyleSheet((theme) => ({
     gap: 24,
     maxHeight: Dimensions.get('window').height * 0.4,
   },
-  buttonsContainer: { flexDirection: 'row', justifyContent: 'space-between' },
+  buttonsContainer: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 8 },
   fullButton: { width: '100%' },
 }));

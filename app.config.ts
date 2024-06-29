@@ -8,17 +8,14 @@ const config: ExpoConfig = {
   orientation: 'portrait',
   userInterfaceStyle: 'automatic',
   scheme: 'geosurveymap',
-  splash: {
-    resizeMode: 'contain',
-    backgroundColor: '#ffffff',
-  },
+  icon: './assets/icon.png',
   ios: {
     supportsTablet: true,
     bundleIdentifier: 'com.geosurvey.map.mobile',
   },
   android: {
     adaptiveIcon: {
-      foregroundImage: './assets/adaptive-icon.png',
+      foregroundImage: './assets/icon.png',
       backgroundColor: '#ffffff',
     },
     package: 'com.geosurvey.map.mobile',

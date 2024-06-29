@@ -9,24 +9,11 @@ import { useSurveyFormInitialization } from '@/hooks/useSurveyInitialization';
 import { useFiltersState } from '@/store/useFilters';
 import { useFormStore } from '@/store/useFormStore';
 import { useMap } from '@/store/useMap';
+import { usePointFocusStore } from '@/store/usePointFocus';
+import { calculateBoundingBox } from '@/utils/map';
 
 import { stylesheet } from './MapContent.styles';
 
-import type { Region } from 'react-native-maps';
-
-const calculateBoundingBox = (region: Region) => {
-  const minX = region.latitude - region.latitudeDelta / 2;
-  const maxX = region.latitude + region.latitudeDelta / 2;
-  const minY = region.longitude - region.longitudeDelta / 2;
-  const maxY = region.longitude + region.longitudeDelta / 2;
-
-  return {
-    minX,
-    maxX,
-    minY,
-    maxY,
-  };
-};
 // {
 //   ...boundingBox,
 //   categories: Object.entries(categories)
@@ -40,17 +27,18 @@ type Props = {
 export const MapContent: React.FC<Props> = ({ onMapMove }) => {
   const { styles } = useStyles(stylesheet);
   const { categories } = useFiltersState();
-  const [boundingBox, setBoundingBox] = useState({
-    minX: 0,
-    minY: 0,
-    maxX: 0,
-    maxY: 0,
-  });
+  // const [boundingBox, setBoundingBox] = useState({
+  //   minX: 0,
+  //   minY: 0,
+  //   maxX: 0,
+  //   maxY: 0,
+  // });
   const { data } = useGetAllSurveys();
   const { triggerFormSheet } = useSurveyFormInitialization();
   const { mapRef } = useMap();
   const { location, category } = useFormStore();
   const filteredData = useMemo(() => data?.filter((survey) => categories[survey.category]), [data, categories]);
+  const { setSelectedPoint, selectedPoint } = usePointFocusStore();
 
   return (
     <View style={styles.container}>
@@ -68,9 +56,9 @@ export const MapContent: React.FC<Props> = ({ onMapMove }) => {
         showsUserLocation={true}
         showsCompass={false}
         onTouchMove={onMapMove}
-        onRegionChangeComplete={(region) => {
-          setBoundingBox(calculateBoundingBox(region));
-        }}
+        // onRegionChangeComplete={(region) => {
+        //   setBoundingBox(calculateBoundingBox(region));
+        // }}
       >
         {filteredData?.map((survey) => (
           <Marker
@@ -80,10 +68,10 @@ export const MapContent: React.FC<Props> = ({ onMapMove }) => {
               longitude: survey.location.y,
             }}
             onPress={() => {
-              console.log(survey);
+              setSelectedPoint(survey);
             }}
           >
-            <MapMarker category={survey.category} />
+            <MapMarker category={survey.category} isFocused={selectedPoint === survey} />
           </Marker>
         ))}
         {location && (

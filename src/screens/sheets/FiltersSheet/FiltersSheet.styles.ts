@@ -1,4 +1,3 @@
-import { Dimensions } from 'react-native';
 import { createStyleSheet } from 'react-native-unistyles';
 
 export const stylesheet = createStyleSheet({
@@ -6,9 +5,8 @@ export const stylesheet = createStyleSheet({
   contentWrapper: {
     alignItems: 'center',
     gap: 24,
-    maxHeight: Dimensions.get('window').height * 0.4,
   },
-  buttonsContainer: { flexDirection: 'row', justifyContent: 'space-between' },
+  buttonsContainer: { flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 12 },
   categoriesGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   label: {
     width: '100%',

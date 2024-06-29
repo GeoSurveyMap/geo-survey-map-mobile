@@ -8,6 +8,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import './src/styles';
 import './src/libs/sheets';
+import 'react-native-gesture-handler';
 
 import { i18n } from '@/libs/i18n';
 import { Map } from '@/screens/Map/Map';

@@ -55,7 +55,7 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
   const { reset, radius, photoUri, category, location, problemDescription, locationName } = useFormStore();
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
-  const { mutateAsync } = useCreateSurvey();
+  const { mutateAsync, isPending } = useCreateSurvey();
 
   const [currentStage, setCurrentStage] = useState(FormStepName.CHOOSE_CATEGORY);
 
@@ -118,9 +118,9 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
     if (!category || !location) return;
     const response = await mutateAsync({
       category,
-      description: '',
+      description: problemDescription,
       locationRequest: { ...location, name: locationName },
-      solution: problemDescription,
+      solution: '',
       affectedArea: radius || 0,
     });
 
@@ -180,7 +180,12 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
         return (
           <>
             <GSMButton onPress={onPrevious} title={t('back')} buttonStyle={GSMButtonStyle.SOFT_DESTRUCTIVE} />
-            <GSMButton onPress={onNext} title={t('addPoint')} buttonStyle={GSMButtonStyle.PRIMARY} />
+            <GSMButton
+              onPress={onNext}
+              title={t('addPoint')}
+              buttonStyle={GSMButtonStyle.PRIMARY}
+              loading={isPending}
+            />
           </>
         );
       case FormStepName.SUCCESS:

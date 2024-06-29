@@ -5,8 +5,10 @@ import { useStyles } from 'react-native-unistyles';
 
 import { BlurInsets } from '@/screens/Map/components/BlurInsets/BlurInsets';
 import { useMap } from '@/store/useMap';
+import { usePointFocusStore } from '@/store/usePointFocus';
 
 import { stylesheet } from './Map.styles';
+import { DetailsCard } from './components/DetailsCard/DetailsCard';
 import { MapContent } from './components/MapContent/MapContent';
 import { OverlayButtons } from './components/OverlayButtons/OverlayButtons';
 
@@ -19,6 +21,7 @@ export const Map: React.FC = () => {
   const { styles } = useStyles(stylesheet);
   const { mapRef } = useMap();
   const [isUserFocused, setIsUserFocused] = useState(false);
+  const { selectedPoint } = usePointFocusStore();
 
   const handleUserFocus = async () => {
     const granted = await requestLocationPermission();
@@ -27,8 +30,8 @@ export const Map: React.FC = () => {
       mapRef.current?.animateToRegion({
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
+        latitudeDelta: 0.005,
+        longitudeDelta: 0.005,
       });
       setIsUserFocused(true);
     }
@@ -43,6 +46,7 @@ export const Map: React.FC = () => {
       <BlurInsets />
       <MapContent onMapMove={handleUserUnfocused} />
       <OverlayButtons isUserFocused={isUserFocused} onUserFocus={handleUserFocus} />
+      {selectedPoint && <DetailsCard point={selectedPoint} />}
     </View>
   );
 };
