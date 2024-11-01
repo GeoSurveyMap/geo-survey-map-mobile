@@ -45,6 +45,7 @@ const config: ExpoConfig = {
         apiKey: process.env.EXPO_PUBLIC_GOOLE_API_KEY,
       },
     ],
+    'expo-localization',
   ],
 };
 

@@ -1,7 +1,9 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 const { withAndroidManifest } = require('@expo/config-plugins');
 
 const withGeoApiKey = (config, { apiKey }) => {
-  return withAndroidManifest(config, async config => {
+  return withAndroidManifest(config, async (config) => {
     const androidManifest = config.modResults;
     const metaDataItem = {
       $: {

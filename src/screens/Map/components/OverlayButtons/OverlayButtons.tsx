@@ -11,13 +11,14 @@ import { Sheet } from '@/types/sheets';
 import { stylesheet } from './OverlayButtons.styles';
 
 type Props = {
-  onUserFocus: () => void;
   isUserFocused: boolean;
+  onUserFocus: () => void;
+  onOpenProfile: () => void;
 };
 
-export const OverlayButtons: React.FC<Props> = ({ onUserFocus, isUserFocused }) => {
+export const OverlayButtons: React.FC<Props> = ({ isUserFocused, onUserFocus, onOpenProfile }) => {
   const { styles, theme } = useStyles(stylesheet);
-  const { isAuthenticated, handleLogin, handleLogout } = useAuth();
+  const { isAuthenticated, handleLogin } = useAuth();
 
   const showFilters = () => {
     SheetManager.show(Sheet.Filters);
@@ -28,7 +29,7 @@ export const OverlayButtons: React.FC<Props> = ({ onUserFocus, isUserFocused }) 
       <View style={styles.buttonRow}>
         <MapButton type={ButtonType.FILTER} onPress={showFilters} />
         {isAuthenticated ? (
-          <MapButton type={ButtonType.PROFILE} onPress={handleLogout} />
+          <MapButton type={ButtonType.PROFILE} onPress={onOpenProfile} />
         ) : (
           <MapButton type={ButtonType.LOGIN} onPress={handleLogin} />
         )}

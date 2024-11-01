@@ -10,9 +10,7 @@ import { stylesheet } from './Success.styles';
 
 const { Success: SuccessIcon } = icons;
 
-type Props = {};
-
-export const Success: React.FC<Props> = ({}) => {
+export const Success: React.FC = () => {
   const { styles, theme } = useStyles(stylesheet);
   const { t } = useTranslation();
   return (

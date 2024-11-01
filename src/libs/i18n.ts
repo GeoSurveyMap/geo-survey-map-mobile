@@ -1,15 +1,36 @@
-import { fallbacks } from 'geo-survey-map-shared-modules';
+import { getLocales } from 'expo-localization';
+import { availableLanguages, fallbacks } from 'geo-survey-map-shared-modules';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-const FALLBACK_LNG = 'pl';
+import { useAppLanguageStore } from '@/store/useAppLanguage';
+
+const FALLBACK_LNG = 'en';
+
+export const getCurrentLanguage = (callback: (lng: string) => void) => {
+  const systemLang = getLocales()[0].languageCode;
+
+  if (systemLang && availableLanguages.some((l) => l.languageCode === systemLang)) {
+    callback(systemLang);
+    return systemLang;
+  }
+
+  callback(FALLBACK_LNG);
+  return FALLBACK_LNG;
+};
 
 const DefaultNamespaces = Object.keys(fallbacks.pl);
 const DefaultLanguages = Object.keys(fallbacks).filter((s) => typeof s === 'string');
 
+const language =
+  useAppLanguageStore.getState().language ||
+  getCurrentLanguage((systemLng) => {
+    useAppLanguageStore.setState({ language: systemLng });
+  });
+
 i18n.use(initReactI18next).init({
   compatibilityJSON: 'v3',
-  lng: FALLBACK_LNG,
+  lng: language,
   fallbackLng: FALLBACK_LNG,
   debug: __DEV__,
   preload: DefaultLanguages,

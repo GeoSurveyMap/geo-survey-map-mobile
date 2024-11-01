@@ -6,8 +6,8 @@ const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 // It calculates the offset for the latitude based on the screen size, knowing that the sheet takes 50% of the screen height,
 // and the point should be in the center of top remaining area.
-export const calculateLatitudeOffset = (latitude: number) => {
-  return latitude - (SCREEN_HEIGHT * 0.5) / 111000 / 2;
+export const calculateLatitudeOffset = (latitude: number, delta: number = 111000) => {
+  return latitude - (SCREEN_HEIGHT * 0.5) / delta / 2;
 };
 
 export const calculateBoundingBox = (region: Region) => {

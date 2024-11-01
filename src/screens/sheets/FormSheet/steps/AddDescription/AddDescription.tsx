@@ -4,9 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { GSMInput } from '@/components/GSMInput/GSMInput';
 import { useFormStore } from '@/store/useFormStore';
 
-type Props = {};
-
-export const AddDescription: React.FC<Props> = ({}) => {
+export const AddDescription: React.FC = () => {
   const { t } = useTranslation();
   const { locationName, problemDescription, setLocationName, setProblemDescription } = useFormStore();
   return (

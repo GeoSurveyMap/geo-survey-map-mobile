@@ -1,7 +1,7 @@
 import { Dimensions } from 'react-native';
 import { createStyleSheet } from 'react-native-unistyles';
 
-export const stylesheet = createStyleSheet((theme) => ({
+export const stylesheet = createStyleSheet(() => ({
   container: { gap: 24 },
   contentWrapper: {
     alignItems: 'center',

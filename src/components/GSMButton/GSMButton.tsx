@@ -13,7 +13,7 @@ import type { PressableProps, StyleProp, ViewStyle } from 'react-native';
 
 export interface GSMButtonProps extends PressableProps {
   title: string;
-  buttonStyle: GSMButtonStyle;
+  buttonStyle?: GSMButtonStyle;
   style?: StyleProp<ViewStyle>;
   loading?: boolean;
 }

@@ -19,8 +19,9 @@ type Props = {
 
 const stepHeight = (index: number) => (index % 5 === 0 ? 12 : 6);
 
-const getGeometricalScaleValue = (value: number) => {
-  Math.round(Math.pow(10, 3 * value));
+export const getGeometricalScaleValue = (value: number) => {
+  'worklet';
+  return Math.round(Math.pow(10, 3 * value));
 };
 
 export const GSMSlider: React.FC<Props> = ({ minValueLabel, maxValueLabel, onValueChange, value }) => {
@@ -34,8 +35,8 @@ export const GSMSlider: React.FC<Props> = ({ minValueLabel, maxValueLabel, onVal
 
   const animatedProps = useAnimatedProps(() => {
     return {
-      value: `${Math.round(Math.pow(10, 3 * animatedValue.value))}m`,
-      text: `${Math.round(Math.pow(10, 3 * animatedValue.value))}m`,
+      value: `${getGeometricalScaleValue(animatedValue.value)}m`,
+      text: `${getGeometricalScaleValue(animatedValue.value)}m`,
     };
   }, [animatedValue]);
 

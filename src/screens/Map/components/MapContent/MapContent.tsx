@@ -1,25 +1,20 @@
 import { useGetAllSurveys } from 'geo-survey-map-shared-modules';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { useStyles } from 'react-native-unistyles';
 
+import { getGeometricalScaleValue } from '@/components/GSMSlider/GSMSlider';
 import { MapMarker } from '@/components/MapMarker/MapMarker';
 import { useSurveyFormInitialization } from '@/hooks/useSurveyInitialization';
 import { useFiltersState } from '@/store/useFilters';
 import { useFormStore } from '@/store/useFormStore';
 import { useMap } from '@/store/useMap';
 import { usePointFocusStore } from '@/store/usePointFocus';
-import { calculateBoundingBox } from '@/utils/map';
+import { calculateLatitudeOffset } from '@/utils/map';
 
 import { stylesheet } from './MapContent.styles';
 
-// {
-//   ...boundingBox,
-//   categories: Object.entries(categories)
-//     .filter(([_, value]) => value)
-//     .map(([key]) => key as Category),
-// }
 type Props = {
   onMapMove: () => void;
 };
@@ -27,18 +22,25 @@ type Props = {
 export const MapContent: React.FC<Props> = ({ onMapMove }) => {
   const { styles } = useStyles(stylesheet);
   const { categories } = useFiltersState();
-  // const [boundingBox, setBoundingBox] = useState({
-  //   minX: 0,
-  //   minY: 0,
-  //   maxX: 0,
-  //   maxY: 0,
-  // });
   const { data } = useGetAllSurveys();
   const { triggerFormSheet } = useSurveyFormInitialization();
   const { mapRef } = useMap();
-  const { location, category } = useFormStore();
+  const { location, category, radius } = useFormStore();
   const filteredData = useMemo(() => data?.filter((survey) => categories[survey.category]), [data, categories]);
   const { setSelectedPoint, selectedPoint } = usePointFocusStore();
+
+  useEffect(() => {
+    if (!location || !radius) return;
+    console.log(getGeometricalScaleValue(radius));
+    const radiusValue = getGeometricalScaleValue(radius);
+    const delta = radiusValue / 10000;
+    mapRef.current?.animateToRegion({
+      latitude: calculateLatitudeOffset(location.x, radiusValue * 11000),
+      longitude: location.y,
+      latitudeDelta: delta,
+      longitudeDelta: delta,
+    });
+  }, [location, mapRef, radius]);
 
   return (
     <View style={styles.container}>
@@ -56,9 +58,6 @@ export const MapContent: React.FC<Props> = ({ onMapMove }) => {
         showsUserLocation={true}
         showsCompass={false}
         onTouchMove={onMapMove}
-        // onRegionChangeComplete={(region) => {
-        //   setBoundingBox(calculateBoundingBox(region));
-        // }}
       >
         {filteredData?.map((survey) => (
           <Marker

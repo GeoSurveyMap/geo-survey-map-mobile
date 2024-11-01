@@ -20,6 +20,12 @@ export const createFontNameForWeight = (weight: keyof typeof fontWeight): string
 };
 
 export const appTypography: Record<TextType, TextStyle> = {
+  [TextType.TITLE]: {
+    fontSize: size.TITLE,
+    fontWeight: weight.TITLE,
+    fontFamily: createFontNameForWeight(weight.TITLE),
+    lineHeight: size.TITLE,
+  },
   [TextType.H1]: {
     fontSize: size.H1,
     fontWeight: weight.H1,
