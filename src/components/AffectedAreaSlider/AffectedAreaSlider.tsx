@@ -4,9 +4,11 @@ import { TextInput, View } from 'react-native';
 import Animated, { useAnimatedProps, useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 import { useStyles } from 'react-native-unistyles';
 
+import { getGeometricalScaleValueWorklet } from '@/utils/map';
+
 import { GSMText } from '../GSMText/GSMText';
 
-import { stylesheet } from './GSMSlider.styles';
+import { stylesheet } from './AffectedAreaSlider.styles';
 
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
@@ -19,15 +21,10 @@ type Props = {
 
 const stepHeight = (index: number) => (index % 5 === 0 ? 12 : 6);
 
-export const getGeometricalScaleValue = (value: number) => {
-  'worklet';
-  return Math.round(Math.pow(10, 3 * value));
-};
-
-export const GSMSlider: React.FC<Props> = ({ minValueLabel, maxValueLabel, onValueChange, value }) => {
+export const AffectedAreaSlider: React.FC<Props> = ({ minValueLabel, maxValueLabel, onValueChange, value }) => {
   const { styles, theme } = useStyles(stylesheet);
   const layoutWidth = useSharedValue(0);
-  const animatedValue = useSharedValue(value || 0);
+  const animatedValue = useSharedValue(value ?? 0);
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: animatedValue.value * (layoutWidth.value - 40) }],
@@ -35,8 +32,8 @@ export const GSMSlider: React.FC<Props> = ({ minValueLabel, maxValueLabel, onVal
 
   const animatedProps = useAnimatedProps(() => {
     return {
-      value: `${getGeometricalScaleValue(animatedValue.value)}m`,
-      text: `${getGeometricalScaleValue(animatedValue.value)}m`,
+      value: `${getGeometricalScaleValueWorklet(animatedValue.value)}m`,
+      text: `${getGeometricalScaleValueWorklet(animatedValue.value)}m`,
     };
   }, [animatedValue]);
 
@@ -64,8 +61,10 @@ export const GSMSlider: React.FC<Props> = ({ minValueLabel, maxValueLabel, onVal
         maximumValue={1}
         minimumTrackTintColor={theme.primary}
         maximumTrackTintColor={theme.outline}
-        onSlidingComplete={(value) => onValueChange(value)}
-        onValueChange={(newValue) => (animatedValue.value = newValue)}
+        onValueChange={(newValue) => {
+          animatedValue.value = newValue;
+          onValueChange(newValue);
+        }}
         value={value}
       />
       <View style={styles.stepsWrapper}>

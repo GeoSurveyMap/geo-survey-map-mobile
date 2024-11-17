@@ -1,17 +1,15 @@
 import { useGetAllSurveys } from 'geo-survey-map-shared-modules';
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { useStyles } from 'react-native-unistyles';
 
-import { getGeometricalScaleValue } from '@/components/GSMSlider/GSMSlider';
 import { MapMarker } from '@/components/MapMarker/MapMarker';
 import { useSurveyFormInitialization } from '@/hooks/useSurveyInitialization';
 import { useFiltersState } from '@/store/useFilters';
 import { useFormStore } from '@/store/useFormStore';
 import { useMap } from '@/store/useMap';
 import { usePointFocusStore } from '@/store/usePointFocus';
-import { calculateLatitudeOffset } from '@/utils/map';
 
 import { stylesheet } from './MapContent.styles';
 
@@ -28,19 +26,6 @@ export const MapContent: React.FC<Props> = ({ onMapMove }) => {
   const { location, category, radius } = useFormStore();
   const filteredData = useMemo(() => data?.filter((survey) => categories[survey.category]), [data, categories]);
   const { setSelectedPoint, selectedPoint } = usePointFocusStore();
-
-  useEffect(() => {
-    if (!location || !radius) return;
-    console.log(getGeometricalScaleValue(radius));
-    const radiusValue = getGeometricalScaleValue(radius);
-    const delta = radiusValue / 10000;
-    mapRef.current?.animateToRegion({
-      latitude: calculateLatitudeOffset(location.x, radiusValue * 11000),
-      longitude: location.y,
-      latitudeDelta: delta,
-      longitudeDelta: delta,
-    });
-  }, [location, mapRef, radius]);
 
   return (
     <View style={styles.container}>
@@ -70,7 +55,11 @@ export const MapContent: React.FC<Props> = ({ onMapMove }) => {
               setSelectedPoint(survey);
             }}
           >
-            <MapMarker category={survey.category} isFocused={selectedPoint === survey} />
+            <MapMarker
+              category={survey.category}
+              affectedArea={survey.affectedArea}
+              isFocused={selectedPoint?.id === survey.id}
+            />
           </Marker>
         ))}
         {location && (
@@ -81,7 +70,7 @@ export const MapContent: React.FC<Props> = ({ onMapMove }) => {
               longitude: location.y,
             }}
           >
-            <MapMarker category={category} isFocused />
+            <MapMarker category={category} affectedArea={radius} isFocused />
           </Marker>
         )}
       </MapView>

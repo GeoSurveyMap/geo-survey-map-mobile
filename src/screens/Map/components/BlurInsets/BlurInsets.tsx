@@ -19,10 +19,11 @@ const SHARED_PROPS: BlurViewProps = {
 export const BlurInsets: React.FC = () => {
   const { top, bottom } = useSafeAreaInsets();
   const { styles } = useStyles(stylesheet);
+
   return (
     <View style={styles.container} pointerEvents='none'>
       <BlurView style={[styles.top, { height: top }]} {...SHARED_PROPS} />
-      <BlurView style={[styles.bottom, { height: bottom + 16 + 14 }]} {...SHARED_PROPS}>
+      <BlurView style={[styles.bottom, { height: bottom + 16 }]} {...SHARED_PROPS}>
         <GSMText style={{ padding: 8, textAlign: 'center' }}>Hold down the desired place on the map</GSMText>
       </BlurView>
     </View>

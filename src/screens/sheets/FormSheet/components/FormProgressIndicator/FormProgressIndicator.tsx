@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { View } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 
@@ -20,11 +20,8 @@ export const FormProgressIndicator: React.FC<Props> = ({ currentStage, stages })
   return (
     <View style={styles.container}>
       {stages.map((stage, index) => (
-        <>
-          <View
-            key={index}
-            style={[styles.stage, stage.isCompleted && styles.completed, index === currentStage && styles.current]}
-          >
+        <Fragment key={`FormProgressIndicator-${index}`}>
+          <View style={[styles.stage, stage.isCompleted && styles.completed, index === currentStage && styles.current]}>
             <GSMText
               style={[
                 styles.stageText,
@@ -38,7 +35,7 @@ export const FormProgressIndicator: React.FC<Props> = ({ currentStage, stages })
           {index !== stages.length - 1 && (
             <View style={[styles.line, index <= currentStage - 1 && styles.linePrimary]} />
           )}
-        </>
+        </Fragment>
       ))}
     </View>
   );

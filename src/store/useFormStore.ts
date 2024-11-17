@@ -1,19 +1,20 @@
 import { create } from 'zustand';
 
+import type { ImagePickerAsset } from 'expo-image-picker';
 import type { Category, Location } from 'geo-survey-map-shared-modules';
 
 type FormStore = {
   location: Location | null;
   category: Category | undefined;
   radius: number | undefined;
-  photoUri: string | undefined;
+  photoAsset: ImagePickerAsset | undefined;
   locationName: string;
   problemDescription: string;
 
   setLocation: (location: Location | null) => void;
   setCategory: (category: Category | undefined) => void;
   setRadius: (radius: number | undefined) => void;
-  setPhotoUri: (photoUri: string | undefined) => void;
+  setPhotoAsset: (photoAsset: ImagePickerAsset | undefined) => void;
   setLocationName: (locationName: string) => void;
   setProblemDescription: (problemDescription: string) => void;
   reset: () => void;
@@ -23,14 +24,14 @@ export const useFormStore = create<FormStore>((set) => ({
   location: null,
   category: undefined,
   radius: 0,
-  photoUri: undefined,
+  photoAsset: undefined,
   locationName: '',
   problemDescription: '',
 
   setLocation: (location) => set({ location }),
   setCategory: (category) => set({ category }),
   setRadius: (radius) => set({ radius }),
-  setPhotoUri: (photoUri) => set({ photoUri }),
+  setPhotoAsset: (photoAsset) => set({ photoAsset }),
   setLocationName: (locationName) => set({ locationName }),
   setProblemDescription: (problemDescription) => set({ problemDescription }),
   reset: () =>
@@ -38,7 +39,7 @@ export const useFormStore = create<FormStore>((set) => ({
       location: null,
       category: undefined,
       radius: 0,
-      photoUri: undefined,
+      photoAsset: undefined,
       locationName: '',
       problemDescription: '',
     }),

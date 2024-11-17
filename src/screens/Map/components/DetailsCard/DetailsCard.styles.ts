@@ -1,7 +1,6 @@
-import { Dimensions } from 'react-native';
 import { createStyleSheet } from 'react-native-unistyles';
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
+import { SCREEN_WIDTH } from '@/utils/platform';
 
 export const stylesheet = createStyleSheet((theme) => ({
   wrapper: {

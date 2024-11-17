@@ -3,7 +3,7 @@ import { SheetManager } from 'react-native-actions-sheet';
 import { useFormStore } from '@/store/useFormStore';
 import { useMap } from '@/store/useMap';
 import { Sheet } from '@/types/sheets';
-import { calculateLatitudeOffset } from '@/utils/map';
+import { SCREEN_HEIGHT } from '@/utils/platform';
 
 import { useAuth } from './useAuth';
 
@@ -19,12 +19,11 @@ export const useSurveyFormInitialization = () => {
       return SheetManager.show(Sheet.Login);
     }
 
-    mapRef.current?.animateToRegion({
-      latitude: calculateLatitudeOffset(location.x),
-      longitude: location.y,
-      latitudeDelta: 0.005,
-      longitudeDelta: 0.005,
+    mapRef.current?.fitToCoordinates([{ latitude: location.x, longitude: location.y }], {
+      edgePadding: { top: 0, right: 0, bottom: SCREEN_HEIGHT * 0.8, left: 0 },
+      animated: true,
     });
+
     setLocation(location);
     SheetManager.show(Sheet.Form);
     const locationName = await mapRef.current?.addressForCoordinate({ latitude: location.x, longitude: location.y });

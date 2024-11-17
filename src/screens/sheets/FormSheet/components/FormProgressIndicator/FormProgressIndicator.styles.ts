@@ -1,3 +1,4 @@
+import { colors } from 'geo-survey-map-shared-modules';
 import { createStyleSheet } from 'react-native-unistyles';
 
 const SIZE = 24;
@@ -15,7 +16,7 @@ export const stylesheet = createStyleSheet((theme) => ({
   current: {
     backgroundColor: theme.primary,
   },
-  currentText: { color: theme.text },
+  currentText: { color: colors.BLACK },
   completed: { borderWidth: 1, borderColor: theme.primary },
   completedText: { color: theme.primary },
   line: { flex: 1, height: 1, backgroundColor: theme.outline },

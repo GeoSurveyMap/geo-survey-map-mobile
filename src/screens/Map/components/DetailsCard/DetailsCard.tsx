@@ -15,15 +15,15 @@ import { useStyles } from 'react-native-unistyles';
 import { GSMText } from '@/components/GSMText/GSMText';
 import { useMap } from '@/store/useMap';
 import { usePointFocusStore } from '@/store/usePointFocus';
-import { calculateLatitudeOffset } from '@/utils/map';
 
 import { stylesheet } from './DetailsCard.styles';
 
 type Props = {
   point: Survey;
+  onSeeMore: () => void;
 };
 
-export const DetailsCard: React.FC<Props> = ({ point }) => {
+export const DetailsCard: React.FC<Props> = ({ point, onSeeMore }) => {
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
   const { bottom } = useSafeAreaInsets();
@@ -34,11 +34,9 @@ export const DetailsCard: React.FC<Props> = ({ point }) => {
   const { reset } = usePointFocusStore();
 
   useEffect(() => {
-    mapRef.current?.animateToRegion({
-      latitude: calculateLatitudeOffset(point.location.x),
-      longitude: point.location.y,
-      latitudeDelta: 0.01,
-      longitudeDelta: 0.01,
+    mapRef.current?.fitToCoordinates([{ latitude: point.location.x, longitude: point.location.y }], {
+      edgePadding: { top: 0, right: 0, bottom: 200, left: 0 },
+      animated: true,
     });
   }, [point, mapRef]);
 
@@ -65,7 +63,7 @@ export const DetailsCard: React.FC<Props> = ({ point }) => {
             </GSMText>
           </View>
         </View>
-        <TouchableOpacity style={styles.seeMoreContainer}>
+        <TouchableOpacity style={styles.seeMoreContainer} onPress={onSeeMore}>
           <GSMText style={styles.seeMoreText}>{t('seeMore')}</GSMText>
         </TouchableOpacity>
       </View>

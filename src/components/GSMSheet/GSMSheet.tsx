@@ -1,5 +1,6 @@
 import React from 'react';
 import ActionSheet from 'react-native-actions-sheet';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 
 import { stylesheet } from './GSMSheet.styles';
@@ -7,10 +8,9 @@ import { stylesheet } from './GSMSheet.styles';
 import type { PropsWithChildren } from 'react';
 import type { ActionSheetProps } from 'react-native-actions-sheet';
 
-interface Props extends ActionSheetProps {}
-
-export const GSMSheet: React.FC<PropsWithChildren<Props>> = ({ children, containerStyle, ...rest }) => {
+export const GSMSheet: React.FC<PropsWithChildren<ActionSheetProps>> = ({ children, containerStyle, ...rest }) => {
   const { styles } = useStyles(stylesheet);
+  const insets = useSafeAreaInsets();
   return (
     <ActionSheet
       closable={true}
@@ -18,6 +18,7 @@ export const GSMSheet: React.FC<PropsWithChildren<Props>> = ({ children, contain
       headerAlwaysVisible={true}
       {...rest}
       containerStyle={{ ...styles.container, ...containerStyle }}
+      safeAreaInsets={insets}
     >
       {children}
     </ActionSheet>

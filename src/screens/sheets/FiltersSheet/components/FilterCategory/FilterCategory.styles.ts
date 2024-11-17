@@ -1,13 +1,13 @@
-import { Dimensions } from 'react-native';
 import { createStyleSheet } from 'react-native-unistyles';
 
 import { createFontNameForWeight } from '@/styles/typography';
+import { SCREEN_WIDTH } from '@/utils/platform';
 
 export const stylesheet = createStyleSheet((theme) => ({
   container: {
     borderRadius: 8,
     borderWidth: 1,
-    width: (Dimensions.get('window').width - 2 * 24 - 2 * 8) / 3,
+    width: (SCREEN_WIDTH - 2 * 24 - 2 * 8) / 3,
     height: 80,
     justifyContent: 'space-around',
     alignItems: 'center',

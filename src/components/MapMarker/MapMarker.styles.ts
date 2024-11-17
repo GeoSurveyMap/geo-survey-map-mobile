@@ -6,8 +6,7 @@ export const stylesheet = createStyleSheet(() => ({
   marker: {
     height: SIZE,
     width: SIZE,
-    borderRadius: SIZE / 2,
-    overflow: 'hidden',
+    borderRadius: 999,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -22,5 +21,6 @@ export const stylesheet = createStyleSheet(() => ({
     right: 0,
     top: 0,
     bottom: 0,
+    borderRadius: 999,
   },
 }));

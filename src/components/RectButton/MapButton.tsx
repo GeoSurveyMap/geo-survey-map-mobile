@@ -3,10 +3,9 @@
 import { TextType } from 'geo-survey-map-shared-modules';
 import { Profile } from 'geo-survey-map-shared-modules/lib/assets/icons';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { TouchableOpacity, View } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
-
-import { i18n } from '@/libs/i18n';
 
 import { GSMText } from '../GSMText/GSMText';
 
@@ -26,13 +25,6 @@ export enum ButtonType {
   PROFILE = 'PROFILE',
 }
 
-const buttonTitle: Record<ButtonType, string | null> = {
-  [ButtonType.FILTER]: i18n.t('filters'),
-  [ButtonType.LOCALIZE]: null,
-  [ButtonType.LOGIN]: i18n.t('login'),
-  [ButtonType.PROFILE]: i18n.t('profile'),
-};
-
 const buttonIcon: Record<ButtonType, React.FunctionComponent<React.SVGAttributes<SVGElement>>> = {
   [ButtonType.FILTER]: require('geo-survey-map-shared-modules').icons.Filters,
   [ButtonType.LOCALIZE]: require('geo-survey-map-shared-modules').icons.Navigate,
@@ -42,7 +34,15 @@ const buttonIcon: Record<ButtonType, React.FunctionComponent<React.SVGAttributes
 
 export const MapButton: React.FC<Props> = ({ type, iconColor, ...rest }) => {
   const { styles, theme } = useStyles(stylesheet);
+  const { t } = useTranslation();
   const color = iconColor || theme.textFaded;
+
+  const buttonTitle: Record<ButtonType, string | null> = {
+    [ButtonType.FILTER]: t('filters'),
+    [ButtonType.LOCALIZE]: null,
+    [ButtonType.LOGIN]: t('login'),
+    [ButtonType.PROFILE]: t('profile'),
+  };
 
   const text = buttonTitle[type];
   const Icon = buttonIcon[type];

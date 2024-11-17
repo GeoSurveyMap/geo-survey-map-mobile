@@ -10,6 +10,7 @@ export const stylesheet = createStyleSheet((theme) => ({
     paddingBottom: 12,
     paddingHorizontal: 12,
     flex: 1,
+    flexGrow: 1,
   },
   wrapperContentContainer: {
     alignSelf: 'stretch',

@@ -11,14 +11,14 @@ const config: ExpoConfig = {
   icon: './assets/icon.png',
   ios: {
     supportsTablet: true,
-    bundleIdentifier: 'com.geosurvey.map.mobile',
+    bundleIdentifier: 'eu.loess.geosurveymap',
   },
   android: {
     adaptiveIcon: {
       foregroundImage: './assets/icon.png',
       backgroundColor: '#ffffff',
     },
-    package: 'com.geosurvey.map.mobile',
+    package: 'eu.loess.geosurveymap',
   },
   plugins: [
     [

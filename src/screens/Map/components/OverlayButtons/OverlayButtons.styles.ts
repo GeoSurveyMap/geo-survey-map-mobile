@@ -7,7 +7,7 @@ export const stylesheet = createStyleSheet(() => ({
     zIndex: 10,
     padding: 16,
     justifyContent: 'space-between',
-    paddingBottom: 16 + 30,
+    paddingBottom: 16 + 16,
   },
   buttonRow: {
     justifyContent: 'space-between',

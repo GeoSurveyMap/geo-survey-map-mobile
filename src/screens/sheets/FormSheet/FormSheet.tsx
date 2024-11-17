@@ -1,4 +1,4 @@
-import { TextType, useCreateSurvey } from 'geo-survey-map-shared-modules';
+import { TextType, useCreateSurvey, useFileUpload } from 'geo-survey-map-shared-modules';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Keyboard, LayoutAnimation, Pressable, UIManager, View } from 'react-native';
@@ -11,7 +11,7 @@ import { GSMSheet } from '@/components/GSMSheet/GSMSheet';
 import { GSMText } from '@/components/GSMText/GSMText';
 import { useFormStore } from '@/store/useFormStore';
 import { Sheet } from '@/types/sheets';
-import { isAndroid } from '@/utils/platform';
+import { isAndroid, isIOS } from '@/utils/platform';
 
 import { stylesheet } from './FormSheet.styles';
 import { FormProgressIndicator } from './components/FormProgressIndicator/FormProgressIndicator';
@@ -52,10 +52,11 @@ const Title = ({ currentStage }: { currentStage: FormStepName }) => {
 };
 
 export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
-  const { reset, radius, photoUri, category, location, problemDescription, locationName } = useFormStore();
+  const { reset, radius, photoAsset, category, location, problemDescription, locationName } = useFormStore();
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
-  const { mutateAsync, isPending } = useCreateSurvey();
+  const { mutateAsync, isPending: isCreateSurveyInProgress } = useCreateSurvey();
+  const { mutateAsync: uploadFileAsync, isPending: isUploadFileInProgress } = useFileUpload();
 
   const [currentStage, setCurrentStage] = useState(FormStepName.CHOOSE_CATEGORY);
 
@@ -116,12 +117,25 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
 
   const onSubmit = async () => {
     if (!category || !location) return;
+    let filePath = undefined;
+    if (photoAsset) {
+      const formData = new FormData();
+      formData.append('file', {
+        // TODO VERIFY
+        uri: isIOS ? photoAsset.uri.replace('file://', '') : photoAsset.uri,
+        type: photoAsset.mimeType,
+        name: 'file',
+      });
+      filePath = (await uploadFileAsync(formData)).data; // TODO: ADD TRY CATCH
+    }
+
     const response = await mutateAsync({
       category,
       description: problemDescription,
       locationRequest: { ...location, name: locationName },
       solution: '',
-      affectedArea: radius || 0,
+      affectedArea: radius ?? 1,
+      filePath,
     });
 
     if (response) {
@@ -169,7 +183,7 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
         return (
           <>
             <GSMButton onPress={onPrevious} title={t('back')} buttonStyle={GSMButtonStyle.SOFT_DESTRUCTIVE} />
-            {photoUri ? (
+            {photoAsset ? (
               <GSMButton onPress={onNext} title={t('next')} buttonStyle={GSMButtonStyle.PRIMARY} />
             ) : (
               <GSMButton onPress={onNext} title={t('skip')} buttonStyle={GSMButtonStyle.SECONDARY} />
@@ -184,7 +198,7 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
               onPress={onNext}
               title={t('addPoint')}
               buttonStyle={GSMButtonStyle.PRIMARY}
-              loading={isPending}
+              loading={isCreateSurveyInProgress || isUploadFileInProgress}
             />
           </>
         );
@@ -203,7 +217,7 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
   const stagesProgress = [
     { isCompleted: true },
     { isCompleted: !!radius },
-    { isCompleted: !!photoUri },
+    { isCompleted: !!photoAsset },
     { isCompleted: false },
   ];
 

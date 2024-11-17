@@ -20,14 +20,18 @@ export const FilterCategory: React.FC<Props> = ({ category, isSelected, onPress 
   const Icon = iconForSurveyMapMarker[category];
   const color = isSelected ? theme.primary : theme.textFaded;
 
+  const categoryName = t(`category.${category}`);
+  const numberOfWords = categoryName.split(' ').length;
+  const numberOfLines = numberOfWords > 1 ? 2 : 1;
+
   return (
     <Pressable
       onPress={onPress}
       style={[styles.container, isSelected ? styles.containerSelected : styles.containerUnselected]}
     >
       <Icon color={color} />
-      <GSMText color={color} style={styles.text}>
-        {t(`category.${category}`)}
+      <GSMText color={color} style={styles.text} numberOfLines={numberOfLines} adjustsFontSizeToFit>
+        {categoryName}
       </GSMText>
     </Pressable>
   );

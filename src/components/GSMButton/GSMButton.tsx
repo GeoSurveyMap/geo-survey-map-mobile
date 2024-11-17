@@ -21,7 +21,7 @@ export interface GSMButtonProps extends PressableProps {
 const getTextColor = (buttonStyle: GSMButtonStyle, theme: Theme) => {
   switch (buttonStyle) {
     case GSMButtonStyle.PRIMARY:
-      return theme.text;
+      return colors.BLACK;
     case GSMButtonStyle.SECONDARY:
       return theme.primary;
     case GSMButtonStyle.DESTRUCTIVE:
