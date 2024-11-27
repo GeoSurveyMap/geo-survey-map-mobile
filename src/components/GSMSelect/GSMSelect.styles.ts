@@ -18,7 +18,7 @@ export const stylesheet = createStyleSheet((theme) => ({
     bottom: 0,
   },
   select: {
-    ...Object(appTypography[TextType.H4]),
+    ...(appTypography[TextType.H4] as Record<string, unknown>),
     color: theme.text,
   },
 }));

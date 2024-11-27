@@ -1,4 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Map as MapIcon, Profile as ProfileIcon, Settings as SettingsIcon } from 'geo-survey-map-shared-modules';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -7,11 +8,9 @@ import { Map } from '@/screens/Map/Map';
 import { Profile } from '@/screens/Profile/Profile';
 import { Settings } from '@/screens/Settings/Settings';
 
-import MapIcon from '../../assets/map.svg';
-import SettingsIcon from '../../assets/settings.svg';
-import ProfileIcon from '../../assets/user.svg';
+import { ScreenName } from './navigation.types';
 
-import { type BottomTabsParamList, ScreenName } from './navigation.types';
+import type { BottomTabsParamList } from './navigation.types';
 
 const Tab = createBottomTabNavigator<BottomTabsParamList>();
 
@@ -27,7 +26,7 @@ function BottomNavigation() {
         name={ScreenName.Profile}
         component={Profile}
         options={{
-          tabBarIcon: ProfileIcon,
+          tabBarIcon: (props) => <ProfileIcon {...props} />,
           title: t('profile'),
         }}
       />
@@ -35,15 +34,15 @@ function BottomNavigation() {
         name={ScreenName.Map}
         component={Map}
         options={{
-          tabBarIcon: MapIcon,
+          tabBarIcon: (props) => <MapIcon {...props} />,
         }}
       />
       <Tab.Screen
         name={ScreenName.Settings}
         component={Settings}
         options={{
-          tabBarIcon: SettingsIcon,
-          title: 'Settings', // TODO: translate
+          tabBarIcon: (props) => <SettingsIcon {...props} />,
+          title: t('settings.title'),
         }}
       />
     </Tab.Navigator>

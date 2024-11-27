@@ -1,6 +1,6 @@
 import { BlurView } from 'expo-blur';
 import { TextType } from 'geo-survey-map-shared-modules';
-import { icons } from 'geo-survey-map-shared-modules';
+import { Map, Navigate } from 'geo-survey-map-shared-modules';
 import React, { useCallback } from 'react';
 import { ActivityIndicator, TouchableOpacity, View } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
@@ -8,7 +8,6 @@ import { useStyles } from 'react-native-unistyles';
 import { useLocation } from '@/hooks/useLocation';
 import { useMap } from '@/store/useMap';
 
-import MapIcon from '../../../assets/map.svg';
 import { GSMText } from '../GSMText/GSMText';
 
 import { stylesheet } from './BottomTabBar.styles';
@@ -16,7 +15,6 @@ import { stylesheet } from './BottomTabBar.styles';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import type { NavigationState } from '@react-navigation/native';
 import type { EdgeInsets } from 'react-native-safe-area-context';
-const { Navigate } = icons;
 
 export const BottomTabBar: React.FC<BottomTabBarProps> = (props) => {
   const { state, insets } = props;
@@ -124,7 +122,7 @@ const MapRouteTab: React.FC<RouteTabProps> = ({ route, index, navigation, state 
       return <Navigate color={theme.primary} size={32} />;
     }
 
-    return <MapIcon color={theme.text} size={32} />;
+    return <Map color={theme.text} size={32} />;
   };
 
   return (

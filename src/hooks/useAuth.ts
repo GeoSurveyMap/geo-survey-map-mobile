@@ -1,16 +1,20 @@
 import { Permissions, Role, useRegisterUser } from 'geo-survey-map-shared-modules';
 
 import { kindeClient } from '@/libs/kinde';
+import { useAppLanguageStore } from '@/store/useAppLanguage';
 import { useAuthStore } from '@/store/useAuthStore';
 
 kindeClient.isAuthenticated.then((isAuthenticated) => useAuthStore.setState({ isAuthenticated }));
 
 export const useAuth = () => {
   const { isAuthenticated, setIsAuthenticated } = useAuthStore();
+  const { language } = useAppLanguageStore();
   const { mutate: registerUser } = useRegisterUser();
 
   const handleLogin = async () => {
-    const token = await kindeClient.login();
+    const token = await kindeClient.login({
+      lang: language,
+    });
     if (token) {
       setIsAuthenticated(true);
       handleBackendRegister();
@@ -18,7 +22,9 @@ export const useAuth = () => {
   };
 
   const handleRegister = async () => {
-    const token = await kindeClient.register();
+    const token = await kindeClient.register({
+      lang: language,
+    });
 
     if (token) {
       setIsAuthenticated(true);

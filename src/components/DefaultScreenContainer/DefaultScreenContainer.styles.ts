@@ -1,5 +1,7 @@
 import { createStyleSheet } from 'react-native-unistyles';
 
+export const DEFAULT_SCREEN_CONTAINER_PADDING = 12;
+
 export const stylesheet = createStyleSheet((theme) => ({
   wrapper: { flex: 1 },
   safeAreaView: {
@@ -7,8 +9,8 @@ export const stylesheet = createStyleSheet((theme) => ({
     flex: 1,
   },
   container: {
-    paddingBottom: 12,
-    paddingHorizontal: 12,
+    paddingBottom: DEFAULT_SCREEN_CONTAINER_PADDING,
+    paddingHorizontal: DEFAULT_SCREEN_CONTAINER_PADDING,
     flex: 1,
     flexGrow: 1,
   },
@@ -23,7 +25,7 @@ export const stylesheet = createStyleSheet((theme) => ({
     minHeight: 32,
   },
   headerButton: {
-    padding: 12,
+    padding: DEFAULT_SCREEN_CONTAINER_PADDING,
     paddingBottom: 24,
   },
 }));

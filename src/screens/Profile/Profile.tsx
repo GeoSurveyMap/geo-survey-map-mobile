@@ -1,6 +1,7 @@
 import { TextType } from 'geo-survey-map-shared-modules';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 
 import { DefaultScreenContainer } from '@/components/DefaultScreenContainer/DefaultScreenContainer';
@@ -8,26 +9,32 @@ import { GSMButton } from '@/components/GSMButton/GSMButton';
 import { GSMButtonStyle } from '@/components/GSMButton/GSMButton.types';
 import { GSMText } from '@/components/GSMText/GSMText';
 import { useAuth } from '@/hooks/useAuth';
+import { type ProfileScreenProps, ScreenName } from '@/navigation/navigation.types';
 
 import { Section } from '../../components/Section/Section';
 
 import { stylesheet } from './Profile.styles';
+import { AddedPointsList } from './components/AddedPointsList/AddedPointsList';
 
-import type { ProfileScreenProps } from '@/navigation/navigation.types';
+import type { Survey } from 'geo-survey-map-shared-modules';
 
 export const Profile: React.FC<ProfileScreenProps> = ({ navigation }) => {
+  const { handleLogin, handleRegister, handleLogout, isAuthenticated } = useAuth();
   const { styles } = useStyles(stylesheet);
+  const { top } = useSafeAreaInsets();
   const { t } = useTranslation();
-  const { handleLogout } = useAuth();
-  const { handleLogin, handleRegister, isAuthenticated } = useAuth();
 
   const logout = async () => {
     await handleLogout();
     navigation.goBack();
   };
 
-  return (
-    <DefaultScreenContainer style={styles.container}>
+  const handleNavigateToDetails = (survey: Survey) => {
+    navigation.navigate(ScreenName.PointDetails, { survey });
+  };
+
+  const ListHeader = () => (
+    <>
       <GSMText textStyle={TextType.TITLE}>{t('userProfile.title')}</GSMText>
       <Section title={t('userProfile.manageAccount')}>
         {isAuthenticated ? (
@@ -46,18 +53,17 @@ export const Profile: React.FC<ProfileScreenProps> = ({ navigation }) => {
           </>
         )}
       </Section>
-      <Section title={'Added points'}>
-        {isAuthenticated ? (
-          <AddedPointsList />
-        ) : (
-          // TODO: translate
-          <GSMText textStyle={TextType.P}>Log in to the applicaiton to see reported points.</GSMText>
-        )}
-      </Section>
+      <Section title={'Added points'} />
+    </>
+  );
+
+  return (
+    <DefaultScreenContainer scrollable={false}>
+      <AddedPointsList
+        header={<ListHeader />}
+        headerStyle={[styles.container, { paddingTop: top }]}
+        onNavigateToDetails={handleNavigateToDetails}
+      />
     </DefaultScreenContainer>
   );
-};
-
-const AddedPointsList: React.FC = () => {
-  return null; // TODO: implement
 };

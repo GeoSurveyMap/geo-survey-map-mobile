@@ -1,4 +1,4 @@
-import { icons } from 'geo-survey-map-shared-modules';
+import { ChevronDown } from 'geo-survey-map-shared-modules';
 import React from 'react';
 import RNPickerSelect from 'react-native-picker-select';
 import { useStyles } from 'react-native-unistyles';
@@ -6,8 +6,6 @@ import { useStyles } from 'react-native-unistyles';
 import { stylesheet } from './GSMSelect.styles';
 
 import type { Item } from 'react-native-picker-select';
-
-const { ChevronDown } = icons;
 
 interface Props<T = string> {
   value: T;

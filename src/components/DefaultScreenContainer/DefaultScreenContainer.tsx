@@ -1,8 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
-import { icons } from 'geo-survey-map-shared-modules';
+import { ArrowLeft, Close } from 'geo-survey-map-shared-modules';
 import React from 'react';
-import { Keyboard, Pressable, ScrollView, View } from 'react-native';
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Pressable, ScrollView, View } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 
 import { BlurInsets } from '@/screens/Map/components/BlurInsets/BlurInsets';
@@ -15,9 +14,8 @@ import type { ViewProps } from 'react-native';
 interface Props extends ViewProps {
   hasBackButton?: boolean;
   hasCloseButton?: boolean;
+  scrollable?: boolean;
 }
-
-const { Close, ArrowLeft } = icons;
 
 const Placeholder = () => <View />;
 
@@ -25,15 +23,18 @@ export const DefaultScreenContainer: React.FC<PropsWithChildren<Props>> = ({
   children,
   hasBackButton = false,
   hasCloseButton = false,
+  scrollable = true,
   ...viewProps
 }) => {
   const { styles, theme } = useStyles(stylesheet);
   const { goBack } = useNavigation();
 
+  const Wrapper = scrollable ? ScrollView : View;
+
   return (
     <View style={[styles.safeAreaView]}>
       <BlurInsets />
-      <ScrollView
+      <Wrapper
         style={styles.wrapper}
         contentContainerStyle={styles.wrapperContentContainer}
         contentInsetAdjustmentBehavior='always'
@@ -58,7 +59,7 @@ export const DefaultScreenContainer: React.FC<PropsWithChildren<Props>> = ({
         <View {...viewProps} style={[styles.container, viewProps.style]}>
           {children}
         </View>
-      </ScrollView>
+      </Wrapper>
     </View>
   );
 };

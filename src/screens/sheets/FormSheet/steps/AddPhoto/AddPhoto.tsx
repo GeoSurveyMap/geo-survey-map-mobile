@@ -1,6 +1,6 @@
 import { BlurView } from 'expo-blur';
 import { TextType } from 'geo-survey-map-shared-modules';
-import { icons } from 'geo-survey-map-shared-modules';
+import { Camera, Close, Library } from 'geo-survey-map-shared-modules';
 import React, { useCallback, useEffect, useLayoutEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Image, Pressable, View } from 'react-native';
@@ -13,8 +13,6 @@ import { useFormStore } from '@/store/useFormStore';
 import { SCREEN_WIDTH } from '@/utils/platform';
 
 import { PADDING, stylesheet } from './AddPhoto.styles';
-
-const { Camera, Library, Close } = icons;
 
 const ANIMATION_DURATION = 300;
 

@@ -22,7 +22,7 @@ export const Settings: React.FC<SettingsScreenProps> = () => {
   return (
     <DefaultScreenContainer style={styles.container}>
       <GSMText textStyle={TextType.TITLE}>{t('settings.title')}</GSMText>
-      <Section title={'Język aplikacji'}>
+      <Section title={t('settings.appLanguage')}>
         <GSMSelect
           items={availableLanguages.map(({ name, emoji, languageCode }) => ({
             label: `${emoji} ${name}`,
@@ -31,6 +31,9 @@ export const Settings: React.FC<SettingsScreenProps> = () => {
           value={language}
           onValueChange={setAppLanguage}
         />
+      </Section>
+      <Section title={t('settings.appVersion')}>
+        {/* <GSMText>1.0.0 (23)</GSMText>  TODO: wyświetlać wersje apki wraz z build numberem */}
       </Section>
     </DefaultScreenContainer>
   );

@@ -1,4 +1,4 @@
-import { type Category, icons } from 'geo-survey-map-shared-modules';
+import { type Category, Question as QuestionIcon } from 'geo-survey-map-shared-modules';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, View } from 'react-native';
@@ -15,8 +15,6 @@ type Props = {
   onQuestionPress: () => void;
   isSelected: boolean;
 };
-
-const QuestionIcon = icons.Question;
 
 export const CategoryItem: React.FC<Props> = ({ category, onPress, onQuestionPress, isSelected }) => {
   const { styles, theme } = useStyles(stylesheet);

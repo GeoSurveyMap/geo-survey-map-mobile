@@ -15,11 +15,7 @@ import { Sheet } from '@/types/sheets';
 
 import { stylesheet } from './MapContent.styles';
 
-type Props = {
-  onMapMove: () => void;
-};
-
-export const MapContent: React.FC<Props> = ({ onMapMove }) => {
+export const MapContent: React.FC = () => {
   const { styles } = useStyles(stylesheet);
   const { categories } = useFiltersState();
   const { data } = useGetAllSurveys();
@@ -44,7 +40,6 @@ export const MapContent: React.FC<Props> = ({ onMapMove }) => {
         showsPointsOfInterest={false}
         showsUserLocation={true}
         showsCompass={false}
-        onTouchMove={onMapMove}
       >
         {filteredData?.map((survey) => (
           <Marker

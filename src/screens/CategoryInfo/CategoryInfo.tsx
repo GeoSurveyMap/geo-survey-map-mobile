@@ -16,24 +16,12 @@ export const CategoryInfo: React.FC<CategoryInfoScreenProps> = ({ route }) => {
   const { t } = useTranslation();
   const { category } = route.params;
 
-  // TODO: Replace with real translated data and image
+  // TODO: Replace with real image
   return (
     <DefaultScreenContainer hasCloseButton>
       <Pressable style={styles.container}>
         <GSMText textStyle={TextType.TITLE}>{t(`category.${category}`)}</GSMText>
-        <GSMText style={{ lineHeight: 20 }}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam non animi libero expedita odio praesentium
-          possimus illum! Ex perspiciatis officiis molestias eius inventore quod alias quas cupiditate, totam fuga
-          reiciendis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam doloremque aspernatur corporis
-          reprehenderit nobis pariatur fuga explicabo deleniti nesciunt iusto in, at libero quos, eum dolore? Eveniet
-          consequuntur debitis voluptates? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, non eaque
-          mollitia consequuntur temporibus possimus dolore tempora consequatur, odio exercitationem amet aut, aspernatur
-          in repudiandae obcaecati sit assumenda eius! Eligendi. Lorem ipsum dolor sit amet consectetur adipisicing
-          elit. Molestiae minima earum accusamus quam inventore ipsum excepturi cupiditate ipsa a corrupti illum vero
-          aperiam, adipisci provident laudantium. Vero magnam eveniet autem. Lorem ipsum dolor sit amet, consectetur
-          adipisicing elit. Eos quos nisi nihil? Quae porro expedita eos ad quod, illo ex sequi excepturi libero nulla
-          officiis dolores quibusdam doloremque harum quaerat? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </GSMText>
+        <GSMText style={{ lineHeight: 20 }}>{t(`categoryInformation.${category}`)}</GSMText>
       </Pressable>
       <Image
         source={{

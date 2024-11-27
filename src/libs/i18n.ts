@@ -22,11 +22,22 @@ export const getCurrentLanguage = (callback: (lng: string) => void) => {
 const DefaultNamespaces = Object.keys(fallbacks.pl);
 const DefaultLanguages = Object.keys(fallbacks).filter((s) => typeof s === 'string');
 
-const language =
-  useAppLanguageStore.getState().language ||
-  getCurrentLanguage((systemLng) => {
-    useAppLanguageStore.setState({ language: systemLng });
-  });
+const getInitialLanguage = (): string => {
+  try {
+    const appLanguageState = useAppLanguageStore?.getState();
+    return (
+      appLanguageState.language ||
+      getCurrentLanguage((systemLng) => {
+        appLanguageState.setAppLanguage(systemLng);
+      })
+    );
+  } catch (error) {
+    console.log(error);
+    return FALLBACK_LNG;
+  }
+};
+
+const language = getInitialLanguage();
 
 i18n.use(initReactI18next).init({
   compatibilityJSON: 'v3',

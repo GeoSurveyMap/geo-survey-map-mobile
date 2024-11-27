@@ -6,6 +6,7 @@ import {
   useMediaLibraryPermissions,
 } from 'expo-image-picker';
 import { useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Alert, Linking } from 'react-native';
 
 import type { ImagePickerAsset, ImagePickerOptions, ImagePickerResult } from 'expo-image-picker';
@@ -21,22 +22,8 @@ const pickerOptions: ImagePickerOptions = {
   selectionLimit: 1,
 };
 
-const t = {
-  noPermisisons: {
-    library: {
-      title: "We can't access your photos", //TODO: translate
-      description: 'Please allow access to your photos in the settings.',
-    },
-    camera: {
-      title: "We can't access your camera",
-      description: 'Please allow access to your camera in the settings.',
-    },
-    cancel: 'Cancel',
-    openSettings: 'Open settings',
-  },
-};
-
 export const useImagePicker = ({ onCanceled }: Props) => {
+  const { t } = useTranslation();
   const [image, setImage] = useState<ImagePickerAsset | null>(null);
   const [cameraPermission, requestCameraPermission] = useCameraPermissions();
   const [, requestLibraryPermission] = useMediaLibraryPermissions();
@@ -56,14 +43,14 @@ export const useImagePicker = ({ onCanceled }: Props) => {
 
   const handleNoPermissions = useCallback(
     (source: 'camera' | 'library') => {
-      Alert.alert(t.noPermisisons[source].title, t.noPermisisons[source].description, [
+      Alert.alert(t(`noPermisisons[${source}].title`), t(`noPermisisons[${source}].description`), [
         {
-          text: t.noPermisisons.cancel,
+          text: t(`noPermisisons.cancel`),
           onPress: onCanceled,
           style: 'cancel',
         },
         {
-          text: t.noPermisisons.openSettings,
+          text: t(`noPermisisons.openSettings`),
           onPress: () => {
             Linking.openSettings();
             onCanceled?.();
@@ -72,7 +59,7 @@ export const useImagePicker = ({ onCanceled }: Props) => {
         },
       ]);
     },
-    [onCanceled],
+    [onCanceled, t],
   );
 
   const launchCamera = useCallback(async () => {

@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native';
 import { createStyleSheet } from 'react-native-unistyles';
 
+export const BOTTOM_BAR_PADDING_VERTICAL = 8;
+export const BOTTOM_BAR_CONTENT_SIZE = 52;
+
 export const stylesheet = createStyleSheet((theme) => ({
   wrapper: {
     position: 'absolute',
@@ -19,7 +22,7 @@ export const stylesheet = createStyleSheet((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
     overflow: 'hidden',
-    paddingVertical: 8,
+    paddingVertical: BOTTOM_BAR_PADDING_VERTICAL,
   },
 
   tab: {
@@ -34,8 +37,8 @@ export const stylesheet = createStyleSheet((theme) => ({
     backgroundColor: theme.background,
     justifyContent: 'center',
     alignItems: 'center',
-    height: 52,
-    width: 52,
+    height: BOTTOM_BAR_CONTENT_SIZE,
+    width: BOTTOM_BAR_CONTENT_SIZE,
     borderRadius: 16,
     shadowColor: theme.textFaded,
     shadowOffset: { width: 0, height: 0 },
