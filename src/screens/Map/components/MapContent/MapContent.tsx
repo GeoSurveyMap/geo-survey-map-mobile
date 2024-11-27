@@ -1,6 +1,7 @@
 import { useGetAllSurveys } from 'geo-survey-map-shared-modules';
 import React, { useMemo } from 'react';
 import { View } from 'react-native';
+import { SheetManager } from 'react-native-actions-sheet';
 import MapView, { Marker } from 'react-native-maps';
 import { useStyles } from 'react-native-unistyles';
 
@@ -10,6 +11,7 @@ import { useFiltersState } from '@/store/useFilters';
 import { useFormStore } from '@/store/useFormStore';
 import { useMap } from '@/store/useMap';
 import { usePointFocusStore } from '@/store/usePointFocus';
+import { Sheet } from '@/types/sheets';
 
 import { stylesheet } from './MapContent.styles';
 
@@ -52,6 +54,7 @@ export const MapContent: React.FC<Props> = ({ onMapMove }) => {
               longitude: survey.location.y,
             }}
             onPress={() => {
+              SheetManager.show(Sheet.Point, { payload: { point: survey } });
               setSelectedPoint(survey);
             }}
           >

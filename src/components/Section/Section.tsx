@@ -5,7 +5,7 @@ import { useStyles } from 'react-native-unistyles';
 
 import { GSMText } from '@/components/GSMText/GSMText';
 
-import { stylesheet } from './ProfileSection.styles';
+import { stylesheet } from './Section.styles';
 
 import type { PropsWithChildren } from 'react';
 
@@ -13,7 +13,7 @@ type Props = {
   title: string;
 };
 
-export const ProfileSection: React.FC<PropsWithChildren<Props>> = ({ title, children }) => {
+export const Section: React.FC<PropsWithChildren<Props>> = ({ title, children }) => {
   const { styles } = useStyles(stylesheet);
   return (
     <View style={styles.container}>

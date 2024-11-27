@@ -32,7 +32,7 @@ i18n.use(initReactI18next).init({
   compatibilityJSON: 'v3',
   lng: language,
   fallbackLng: FALLBACK_LNG,
-  debug: __DEV__,
+  debug: false,
   preload: DefaultLanguages,
   ns: DefaultNamespaces,
   defaultNS: 'Default',

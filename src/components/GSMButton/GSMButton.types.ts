@@ -4,3 +4,8 @@ export enum GSMButtonStyle {
   DESTRUCTIVE = 'DESTRUCTIVE',
   SOFT_DESTRUCTIVE = 'SOFT_DESTRUCTIVE',
 }
+
+export enum GMSButtonSize {
+  REGULAR = 'REGULAR',
+  SMALL = 'SMALL',
+}

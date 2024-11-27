@@ -19,6 +19,7 @@ export const GSMSheet: React.FC<PropsWithChildren<ActionSheetProps>> = ({ childr
       {...rest}
       containerStyle={{ ...styles.container, ...containerStyle }}
       safeAreaInsets={insets}
+      enableRouterBackNavigation={true}
     >
       {children}
     </ActionSheet>

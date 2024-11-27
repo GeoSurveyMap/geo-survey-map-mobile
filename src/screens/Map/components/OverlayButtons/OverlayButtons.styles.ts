@@ -7,10 +7,11 @@ export const stylesheet = createStyleSheet(() => ({
     zIndex: 10,
     padding: 16,
     justifyContent: 'space-between',
-    paddingBottom: 16 + 16,
+    flexDirection: 'column-reverse',
   },
   buttonRow: {
     justifyContent: 'space-between',
+    gap: 8,
     flexDirection: 'row',
   },
   rowReversed: {

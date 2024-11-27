@@ -20,6 +20,7 @@ export const stylesheet = createStyleSheet((theme) => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    minHeight: 32,
   },
   headerButton: {
     padding: 12,

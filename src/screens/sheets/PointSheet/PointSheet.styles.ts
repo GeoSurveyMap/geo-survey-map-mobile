@@ -1,20 +1,11 @@
 import { createStyleSheet } from 'react-native-unistyles';
 
-import { SCREEN_WIDTH } from '@/utils/platform';
-
 export const stylesheet = createStyleSheet((theme) => ({
   wrapper: {
     flex: 1,
   },
   container: {
-    backgroundColor: theme.background,
-    borderRadius: 24,
-    maxHeight: 240,
-    width: SCREEN_WIDTH - 32,
-    margin: 16,
-    position: 'absolute',
-    bottom: 0,
-    alignItems: 'center',
+    padding: 0,
   },
   dragHandle: {
     height: 4,
@@ -30,10 +21,9 @@ export const stylesheet = createStyleSheet((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 12,
-    paddingTop: 24,
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
-    width: '100%',
+    paddingTop: 18,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
   contentContainer: {
     padding: 12,
@@ -45,6 +35,7 @@ export const stylesheet = createStyleSheet((theme) => ({
   },
   seeMoreContainer: {
     padding: 12,
+    alignSelf: 'center',
   },
   seeMoreText: {
     textDecorationLine: 'underline',

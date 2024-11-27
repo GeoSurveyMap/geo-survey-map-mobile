@@ -12,6 +12,7 @@ import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
 import { useStyles } from 'react-native-unistyles';
 
 import { useMap } from '@/store/useMap';
+import { usePointFocusStore } from '@/store/usePointFocus';
 import { hexToAlpha } from '@/utils/colors';
 import { calculateMetersPerPixel } from '@/utils/map';
 import { SCREEN_WIDTH, isAndroid } from '@/utils/platform';
@@ -48,6 +49,17 @@ export const MapMarker: React.FC<Props> = ({ category, affectedArea, isFocused }
 const AffectedAreaCircle: React.FC<{ radius: number; color: string }> = ({ radius, color }) => {
   const { mapRef } = useMap();
   const [size, setSize] = useState(0);
+  const { selectedPoint } = usePointFocusStore();
+
+  useEffect(() => {
+    if (!selectedPoint) return;
+
+    mapRef.current?.setCamera({
+      center: { latitude: selectedPoint.location.x, longitude: selectedPoint.location.y },
+      altitude: 100,
+      zoom: 15, // TODO: Test on Android
+    });
+  }, [mapRef, selectedPoint]);
 
   const handleZoomOut = useCallback(async () => {
     const camera = await mapRef.current?.getCamera();
@@ -60,6 +72,24 @@ const AffectedAreaCircle: React.FC<{ radius: number; color: string }> = ({ radiu
     } else {
       if (camera.altitude !== undefined) {
         camera.altitude *= 2;
+      }
+    }
+
+    mapRef.current?.setCamera(camera);
+    return mapRef.current?.getMapBoundaries();
+  }, [mapRef]);
+
+  const handleZoomIn = useCallback(async () => {
+    const camera = await mapRef.current?.getCamera();
+    if (!camera) return;
+
+    if (isAndroid) {
+      if (camera.zoom !== undefined) {
+        camera.zoom += 1;
+      }
+    } else {
+      if (camera.altitude !== undefined) {
+        camera.altitude /= 2;
       }
     }
 
@@ -81,14 +111,20 @@ const AffectedAreaCircle: React.FC<{ radius: number; color: string }> = ({ radiu
 
     let size = calculateSize(mapBoundaries);
 
-    while (size > SCREEN_WIDTH) {
-      const newMapBoundaries = await handleZoomOut();
-      if (!newMapBoundaries) return;
-      size = calculateSize(newMapBoundaries);
+    while (size > SCREEN_WIDTH || (radius > 5 && size <= 50)) {
+      if (size < 50) {
+        const newMapBoundaries = await handleZoomIn();
+        if (!newMapBoundaries) return;
+        size = calculateSize(newMapBoundaries);
+      } else {
+        const newMapBoundaries = await handleZoomOut();
+        if (!newMapBoundaries) return;
+        size = calculateSize(newMapBoundaries);
+      }
     }
 
     setSize(size);
-  }, [calculateSize, handleZoomOut, mapRef]);
+  }, [calculateSize, handleZoomIn, handleZoomOut, mapRef, radius]);
 
   useEffect(() => {
     setCircleSize();

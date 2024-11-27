@@ -2,6 +2,7 @@ declare global {
   namespace NodeJS {
     interface ProcessEnv {
       EXPO_PUBLIC_API_URL: string;
+      EXPO_PUBLIC_IMAGES_URL: string;
       EXPO_PUBLIC_APP_NAME: string;
       EXPO_PUBLIC_APP_VERSION: string;
       EXPO_PUBLIC_KINDE_ISSUER_URL: string;

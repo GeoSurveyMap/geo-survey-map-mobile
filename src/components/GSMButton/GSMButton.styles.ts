@@ -1,6 +1,6 @@
 import { createStyleSheet } from 'react-native-unistyles';
 
-import { GSMButtonStyle } from './GSMButton.types';
+import { GMSButtonSize, GSMButtonStyle } from './GSMButton.types';
 
 export const stylesheet = createStyleSheet((theme) => ({
   commonButton: {
@@ -13,7 +13,6 @@ export const stylesheet = createStyleSheet((theme) => ({
   },
   pressedIn: {
     opacity: 0.8,
-    transform: [{ scale: 0.99 }],
   },
   disabled: {
     opacity: 0.5,
@@ -33,5 +32,9 @@ export const stylesheet = createStyleSheet((theme) => ({
   [GSMButtonStyle.SOFT_DESTRUCTIVE]: {
     backgroundColor: 'invisible',
     paddingHorizontal: 0,
+  },
+  [GMSButtonSize.REGULAR]: {},
+  [GMSButtonSize.SMALL]: {
+    transform: [{ scale: 0.8 }],
   },
 }));

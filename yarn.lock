@@ -7919,11 +7919,11 @@ __metadata:
 
 "geo-survey-map-shared-modules@https://github.com/GeoSurveyMap/geo-survey-map-shared-modules.git":
   version: 0.0.1
-  resolution: "geo-survey-map-shared-modules@https://github.com/GeoSurveyMap/geo-survey-map-shared-modules.git#commit=4ad43a5f957e24d24f123e5302497f7cf0b801a7"
+  resolution: "geo-survey-map-shared-modules@https://github.com/GeoSurveyMap/geo-survey-map-shared-modules.git#commit=fe9de0b9e5073d159bb6bdc622d28ac5cd1a418e"
   dependencies:
     "@tanstack/react-query": "npm:^5.36.0"
     axios: "npm:^1.6.8"
-  checksum: 10c0/beba6a22588877e5a14bbd17453c200d126a2eeed0d2c750ec295ad2feaf1e91baf7c75c7d3919ef7e4263b405a0d632658b0e62543ee21baddb22d08d6c98d6
+  checksum: 10c0/56c0ef3cccfdfb4fc3aff0505ff56848049e06e025b73adc93d5444dbf895a28e7bf9831ef28669ec7a5ce2cdb35d5bb2de53c2aa4978186c934c4a19d0d1d57
   languageName: node
   linkType: hard
 

@@ -12,5 +12,6 @@ export const stylesheet = createStyleSheet((theme) => ({
     backgroundColor: theme.outline,
     position: 'absolute',
     top: 4,
+    zIndex: 1000,
   },
 }));

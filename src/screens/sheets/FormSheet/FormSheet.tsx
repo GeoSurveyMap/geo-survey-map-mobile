@@ -126,7 +126,10 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
         type: photoAsset.mimeType,
         name: 'file',
       });
-      filePath = (await uploadFileAsync(formData)).data; // TODO: ADD TRY CATCH
+      const {
+        data: { data },
+      } = await uploadFileAsync(formData);
+      filePath = data; // TODO: ADD TRY CATCH
     }
 
     const response = await mutateAsync({
