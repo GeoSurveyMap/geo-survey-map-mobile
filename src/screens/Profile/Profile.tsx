@@ -53,7 +53,7 @@ export const Profile: React.FC<ProfileScreenProps> = ({ navigation }) => {
           </>
         )}
       </Section>
-      <Section title={'Added points'} />
+      <Section title={t('pointsList.title')} />
     </>
   );
 

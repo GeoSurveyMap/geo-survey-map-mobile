@@ -14,7 +14,6 @@ axiosClient.interceptors.request.use(
 
     if (isAuthenticated) {
       const token = await kindeClient.getToken();
-      console.log(token.access_token);
       config.headers.Authorization = `Bearer ${token.access_token}`;
     }
 

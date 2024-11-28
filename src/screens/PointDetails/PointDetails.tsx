@@ -27,7 +27,7 @@ export const PointDetails: React.FC<PointDetailsScreenProps> = ({
     { label: t('pointDetails.affectedArea'), text: survey.affectedArea.toString() + 'm' },
     { label: t('pointDetails.problemDescription'), text: survey.description },
     { label: t('pointDetails.problemSolution'), text: survey.solution },
-    { label: 'Data zgłoszenia', text: formatDateTime(survey.createdAt) }, // TODO: translation
+    { label: t('pointDetails.reportDate'), text: formatDateTime(survey.createdAt) },
   ];
 
   return (
