@@ -18,7 +18,7 @@ type Props = {
   onPress: () => void;
 };
 
-export const AddedPointsListItem: React.FC<Props> = ({ item, index, onPress }) => {
+export const AddedPointsListItem: React.FC<Props> = memo(({ item, index, onPress }) => {
   const { styles, theme } = useStyles(stylesheet);
   const { t } = useTranslation();
 
@@ -42,7 +42,9 @@ export const AddedPointsListItem: React.FC<Props> = ({ item, index, onPress }) =
       </View>
     </Pressable>
   );
-};
+});
+
+AddedPointsListItem.displayName = 'AddedPointsListItem';
 
 const Minimap = memo(({ survey }: { survey: Survey }) => (
   <MapView

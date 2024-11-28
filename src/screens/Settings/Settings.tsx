@@ -6,9 +6,8 @@ import { useStyles } from 'react-native-unistyles';
 import { DefaultScreenContainer } from '@/components/DefaultScreenContainer/DefaultScreenContainer';
 import { GSMSelect } from '@/components/GSMSelect/GSMSelect';
 import { GSMText } from '@/components/GSMText/GSMText';
+import { Section } from '@/components/Section/Section';
 import { useAppLanguageStore } from '@/store/useAppLanguage';
-
-import { Section } from '../../components/Section/Section';
 
 import { stylesheet } from './Settings.styles';
 
@@ -33,7 +32,9 @@ export const Settings: React.FC<SettingsScreenProps> = () => {
         />
       </Section>
       <Section title={t('settings.appVersion')}>
-        {/* <GSMText>1.0.0 (23)</GSMText>  TODO: wyświetlać wersje apki wraz z build numberem */}
+        <GSMText>
+          {process.env.EXPO_PUBLIC_APP_VERSION} ({process.env.EXPO_PUBLIC_APP_BUILD_NUMBER})
+        </GSMText>
       </Section>
     </DefaultScreenContainer>
   );

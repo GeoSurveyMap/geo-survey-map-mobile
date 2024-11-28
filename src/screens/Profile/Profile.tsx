@@ -8,10 +8,9 @@ import { DefaultScreenContainer } from '@/components/DefaultScreenContainer/Defa
 import { GSMButton } from '@/components/GSMButton/GSMButton';
 import { GSMButtonStyle } from '@/components/GSMButton/GSMButton.types';
 import { GSMText } from '@/components/GSMText/GSMText';
+import { Section } from '@/components/Section/Section';
 import { useAuth } from '@/hooks/useAuth';
 import { type ProfileScreenProps, ScreenName } from '@/navigation/navigation.types';
-
-import { Section } from '../../components/Section/Section';
 
 import { stylesheet } from './Profile.styles';
 import { AddedPointsList } from './components/AddedPointsList/AddedPointsList';

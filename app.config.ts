@@ -12,6 +12,7 @@ const config: ExpoConfig = {
   ios: {
     supportsTablet: true,
     bundleIdentifier: 'eu.loess.geosurveymap',
+    buildNumber: process.env.EXPO_PUBLIC_APP_BUILD_NUMBER,
   },
   android: {
     adaptiveIcon: {

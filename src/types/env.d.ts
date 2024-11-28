@@ -5,6 +5,7 @@ declare global {
       EXPO_PUBLIC_IMAGES_URL: string;
       EXPO_PUBLIC_APP_NAME: string;
       EXPO_PUBLIC_APP_VERSION: string;
+      EXPO_PUBLIC_APP_BUILD_NUMBER: string;
       EXPO_PUBLIC_KINDE_ISSUER_URL: string;
       EXPO_PUBLIC_KINDE_POST_CALLBACK_URL: string;
       EXPO_PUBLIC_KINDE_CLIENT_ID: string;
