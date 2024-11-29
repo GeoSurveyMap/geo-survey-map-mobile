@@ -64,4 +64,12 @@ module.exports = {
   env: {
     node: true,
   },
+  overrides: [
+    {
+      files: ['App.tsx'],
+      rules: {
+        'import/no-default-export': 'off',
+      },
+    },
+  ],
 };

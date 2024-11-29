@@ -14,7 +14,6 @@ import { RootStack } from '@/navigation/RootStack';
 
 updateApiClient.setBaseURL(process.env.EXPO_PUBLIC_API_URL);
 
-// eslint-disable-next-line import/no-default-export
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
