@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { TextType } from 'geo-survey-map-shared-modules';
+import { Filters, TextType } from 'geo-survey-map-shared-modules';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { TouchableOpacity, View } from 'react-native';
@@ -22,7 +22,7 @@ export enum ButtonType {
 }
 
 const buttonIcon: Record<ButtonType, React.FunctionComponent<React.SVGAttributes<SVGElement>>> = {
-  [ButtonType.FILTER]: require('geo-survey-map-shared-modules').icons.Filters,
+  [ButtonType.FILTER]: Filters,
 };
 
 export const MapButton: React.FC<Props> = ({ type, iconColor, ...rest }) => {

@@ -4,6 +4,8 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import type { Category, Survey } from 'geo-survey-map-shared-modules';
 
 export enum ScreenName {
+  Onboarding = 'Onboarding',
+
   Map = 'Map',
   Profile = 'Profile',
   Settings = 'Settings',
@@ -14,6 +16,7 @@ export enum ScreenName {
 }
 
 export type RootStackParamList = {
+  [ScreenName.Onboarding]: undefined;
   [ScreenName.BottomNavigation]: undefined;
   [ScreenName.CategoryInfo]: { category: Category };
   [ScreenName.PointDetails]: { survey: Survey };
@@ -40,3 +43,4 @@ export type SettingsScreenProps = BottomTabsScreenProps<ScreenName.Settings>;
 
 export type CategoryInfoScreenProps = RootStackScreenProps<ScreenName.CategoryInfo>;
 export type PointDetailsScreenProps = RootStackScreenProps<ScreenName.PointDetails>;
+export type OnboardingScreenProps = RootStackScreenProps<ScreenName.Onboarding>;

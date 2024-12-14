@@ -1,4 +1,4 @@
-import { Permissions, Role, useRegisterUser } from 'geo-survey-map-shared-modules';
+import { Permissions, Role, queryClient, useRegisterUser } from 'geo-survey-map-shared-modules';
 
 import { kindeClient } from '@/libs/kinde';
 import { useAppLanguageStore } from '@/store/useAppLanguage';
@@ -44,6 +44,7 @@ export const useAuth = () => {
 
   const handleLogout = async () => {
     await kindeClient.logout();
+    queryClient.clear();
     setIsAuthenticated(false);
   };
 

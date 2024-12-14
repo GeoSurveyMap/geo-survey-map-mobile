@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { QueryClientProvider } from '@tanstack/react-query';
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import { StatusBar } from 'expo-status-bar';
 import { queryClient, updateApiClient } from 'geo-survey-map-shared-modules';
 import React from 'react';
@@ -10,13 +10,14 @@ import './src/styles';
 import './src/libs/sheets';
 
 import { i18n } from '@/libs/i18n';
+import { queryClientPersister } from '@/libs/storage';
 import { RootStack } from '@/navigation/RootStack';
 
 updateApiClient.setBaseURL(process.env.EXPO_PUBLIC_API_URL);
 
 export default function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <PersistQueryClientProvider client={queryClient} persistOptions={{ persister: queryClientPersister }}>
       <I18nextProvider i18n={i18n}>
         <SafeAreaProvider style={{ flex: 1 }}>
           <NavigationContainer>
@@ -27,6 +28,6 @@ export default function App() {
           </NavigationContainer>
         </SafeAreaProvider>
       </I18nextProvider>
-    </QueryClientProvider>
+    </PersistQueryClientProvider>
   );
 }
