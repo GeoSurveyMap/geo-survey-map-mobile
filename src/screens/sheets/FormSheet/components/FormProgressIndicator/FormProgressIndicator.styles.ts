@@ -1,6 +1,8 @@
 import { colors } from 'geo-survey-map-shared-modules';
 import { createStyleSheet } from 'react-native-unistyles';
 
+import { createFontNameForWeight } from '@/styles/typography';
+
 const SIZE = 24;
 
 export const stylesheet = createStyleSheet((theme) => ({
@@ -11,8 +13,9 @@ export const stylesheet = createStyleSheet((theme) => ({
     borderRadius: SIZE / 3,
     justifyContent: 'center',
     alignItems: 'center',
+    overflow: 'hidden',
   },
-  stageText: { fontWeight: '600', color: theme.textFaded },
+  stageText: { fontWeight: '600', fontFamily: createFontNameForWeight('600'), color: theme.textFaded },
   current: {
     backgroundColor: theme.primary,
   },

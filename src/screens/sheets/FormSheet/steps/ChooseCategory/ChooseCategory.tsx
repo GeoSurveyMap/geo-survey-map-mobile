@@ -1,10 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
-import { Category } from 'geo-survey-map-shared-modules';
+import { Category, TextType } from 'geo-survey-map-shared-modules';
 import React from 'react';
 import { useCallback } from 'react';
-import { FlatList, type ListRenderItemInfo } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { type ListRenderItemInfo, SectionList } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 
+import { GSMText } from '@/components/GSMText/GSMText';
 import { ScreenName } from '@/navigation/navigation.types';
 import { useFormStore } from '@/store/useFormStore';
 
@@ -14,10 +16,15 @@ import { CategoryItem } from './components/CategoryItem/CategoryItem';
 import type { RootStackParamList } from '@/navigation/navigation.types';
 import type { NavigationProp } from '@react-navigation/native';
 
+const otherCategories: Category[] = [Category.LOSS_OF_ORGANIC_MATTER, Category.PH, Category.BIODIVERSITY];
+
+const categoriesWithoutOthers = Object.values(Category).filter((category) => !otherCategories.includes(category));
+
 export const ChooseCategory = () => {
   const { styles } = useStyles(stylesheet);
   const { category, setCategory } = useFormStore();
   const { navigate } = useNavigation<NavigationProp<RootStackParamList>>();
+  const { t } = useTranslation();
 
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Category>) => (
@@ -31,12 +38,23 @@ export const ChooseCategory = () => {
     [category, navigate, setCategory],
   );
 
+  const renderSectionHeader = useCallback(
+    ({ section: { title } }: { section: { title: string } }) => <GSMText textStyle={TextType.H4}>{title}</GSMText>,
+    [],
+  );
+
   return (
-    <FlatList
+    <SectionList
       style={styles.categoriesContainer}
       contentContainerStyle={styles.contentContainer}
-      data={Object.values(Category)}
+      sections={[
+        { title: t('categories'), data: categoriesWithoutOthers },
+        { title: t('other'), data: otherCategories },
+      ]}
+      stickySectionHeadersEnabled={false}
       renderItem={renderItem}
+      renderSectionHeader={renderSectionHeader}
+      keyExtractor={(item) => item}
     />
   );
 };

@@ -13,6 +13,9 @@ export enum ScreenName {
   CategoryInfo = 'CategoryInfo',
   PointDetails = 'PointDetails',
   BottomNavigation = 'BottomNavigation',
+  HowToUse = 'HowToUse',
+  SoilCategories = 'AboutSoils',
+  PrivacyPolicy = 'PrivacyPolicy',
 }
 
 export type RootStackParamList = {
@@ -20,6 +23,9 @@ export type RootStackParamList = {
   [ScreenName.BottomNavigation]: undefined;
   [ScreenName.CategoryInfo]: { category: Category };
   [ScreenName.PointDetails]: { survey: Survey };
+  [ScreenName.HowToUse]: undefined;
+  [ScreenName.SoilCategories]: undefined;
+  [ScreenName.PrivacyPolicy]: undefined;
 };
 
 export type BottomTabsParamList = {
@@ -44,3 +50,6 @@ export type SettingsScreenProps = BottomTabsScreenProps<ScreenName.Settings>;
 export type CategoryInfoScreenProps = RootStackScreenProps<ScreenName.CategoryInfo>;
 export type PointDetailsScreenProps = RootStackScreenProps<ScreenName.PointDetails>;
 export type OnboardingScreenProps = RootStackScreenProps<ScreenName.Onboarding>;
+export type HowToUseScreenProps = RootStackScreenProps<ScreenName.HowToUse>;
+export type SoilCategoriesScreenProps = RootStackScreenProps<ScreenName.SoilCategories>;
+export type PrivacyPolicyScreenProps = RootStackScreenProps<ScreenName.PrivacyPolicy>;

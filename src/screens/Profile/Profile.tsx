@@ -1,6 +1,7 @@
 import { TextType } from 'geo-survey-map-shared-modules';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Alert } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 
@@ -18,10 +19,10 @@ import { AddedPointsList } from './components/AddedPointsList/AddedPointsList';
 import type { Survey } from 'geo-survey-map-shared-modules';
 
 export const Profile: React.FC<ProfileScreenProps> = ({ navigation }) => {
-  const { handleLogin, handleRegister, handleLogout, isAuthenticated } = useAuth();
+  const { handleLogin, handleRegister, handleLogout, handleDeleteAccount, isAuthenticated } = useAuth();
   const { styles } = useStyles(stylesheet);
-  const { top } = useSafeAreaInsets();
   const { t } = useTranslation();
+  const { top } = useSafeAreaInsets();
 
   const logout = async () => {
     await handleLogout();
@@ -30,6 +31,46 @@ export const Profile: React.FC<ProfileScreenProps> = ({ navigation }) => {
 
   const handleNavigateToDetails = (survey: Survey) => {
     navigation.navigate(ScreenName.PointDetails, { survey });
+  };
+
+  const deleteAccountFirstConfirmation = () => {
+    Alert.alert(
+      t('userProfile.deleteAccountPopup.firstConfirmation.title'),
+      t('userProfile.deleteAccountPopup.firstConfirmation.description'),
+      [
+        {
+          text: t('userProfile.deleteAccountPopup.cancel'),
+          style: 'cancel',
+        },
+        {
+          text: t('userProfile.deleteAccountPopup.button'),
+          style: 'destructive',
+          onPress: () => {
+            deleteAccountSecondConfirmation();
+          },
+        },
+      ],
+    );
+  };
+
+  const deleteAccountSecondConfirmation = () => {
+    Alert.alert(
+      t('userProfile.deleteAccountPopup.secondConfirmation.title'),
+      t('userProfile.deleteAccountPopup.secondConfirmation.description'),
+      [
+        {
+          text: t('userProfile.deleteAccountPopup.cancel'),
+          style: 'cancel',
+        },
+        {
+          text: t('userProfile.deleteAccountPopup.button'),
+          style: 'destructive',
+          onPress: () => {
+            handleDeleteAccount();
+          },
+        },
+      ],
+    );
   };
 
   const ListHeader = () => (
@@ -42,7 +83,7 @@ export const Profile: React.FC<ProfileScreenProps> = ({ navigation }) => {
             <GSMButton
               buttonStyle={GSMButtonStyle.SECONDARY}
               title={t('userProfile.removeAccount')}
-              onPress={() => {}}
+              onPress={deleteAccountFirstConfirmation}
             />
           </>
         ) : (
@@ -59,8 +100,9 @@ export const Profile: React.FC<ProfileScreenProps> = ({ navigation }) => {
   return (
     <DefaultScreenContainer scrollable={false}>
       <AddedPointsList
+        style={{ paddingTop: top + 24 }}
         header={<ListHeader />}
-        headerStyle={[styles.container, { paddingTop: top }]}
+        headerStyle={styles.container}
         onNavigateToDetails={handleNavigateToDetails}
       />
     </DefaultScreenContainer>

@@ -66,6 +66,7 @@ export const AffectedAreaSlider: React.FC<Props> = ({ minValueLabel, maxValueLab
           onValueChange(newValue);
         }}
         value={value}
+        thumbTintColor={'white'}
       />
       <View style={styles.stepsWrapper}>
         {Array.from({ length: 11 }).map((_, index) => (

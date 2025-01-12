@@ -1,9 +1,15 @@
 import { createStyleSheet } from 'react-native-unistyles';
 
 export const PADDING = 12;
+const MAX_HEIGHT = 350;
 
 export const stylesheet = createStyleSheet((theme) => ({
-  container: { width: '100%', gap: PADDING, paddingBottom: PADDING },
+  container: {
+    width: '100%',
+    gap: PADDING,
+    paddingBottom: PADDING,
+    maxHeight: MAX_HEIGHT,
+  },
   buttonsContainer: { gap: PADDING, alignItems: 'center' },
   takePhotoContainer: {
     width: '100%',
@@ -27,6 +33,8 @@ export const stylesheet = createStyleSheet((theme) => ({
     padding: 10,
   },
   image: {
-    width: '100%',
+    resizeMode: 'contain',
+    maxHeight: MAX_HEIGHT,
+    flexGrow: 1,
   },
 }));

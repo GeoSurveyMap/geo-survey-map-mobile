@@ -47,6 +47,18 @@ const config: ExpoConfig = {
       },
     ],
     'expo-localization',
+    [
+      'expo-splash-screen',
+      {
+        backgroundColor: '#000000',
+        image: './assets/splash-icon.png',
+        dark: {
+          image: './assets/splash-icon.png',
+          backgroundColor: '#222222',
+        },
+        imageWidth: 200,
+      },
+    ],
   ],
 };
 

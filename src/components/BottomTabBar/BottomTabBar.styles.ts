@@ -13,7 +13,7 @@ export const stylesheet = createStyleSheet((theme) => ({
     zIndex: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: StyleSheet.hairlineWidth,
+    borderTopWidth: StyleSheet.hairlineWidth,
     borderColor: theme.surface,
     overflow: 'hidden',
   },

@@ -1,4 +1,4 @@
-import { Permissions, Role, queryClient, useRegisterUser } from 'geo-survey-map-shared-modules';
+import { queryClient, useDeleteUserSelf, useRegisterUser } from 'geo-survey-map-shared-modules';
 
 import { kindeClient } from '@/libs/kinde';
 import { useAppLanguageStore } from '@/store/useAppLanguage';
@@ -10,6 +10,7 @@ export const useAuth = () => {
   const { isAuthenticated, setIsAuthenticated } = useAuthStore();
   const { language } = useAppLanguageStore();
   const { mutate: registerUser } = useRegisterUser();
+  const { mutateAsync: deleteAccount } = useDeleteUserSelf();
 
   const handleLogin = async () => {
     const token = await kindeClient.login({
@@ -37,8 +38,7 @@ export const useAuth = () => {
     registerUser({
       kindeId: id,
       email: email,
-      permissions: [Permissions.POLAND],
-      role: Role.ROLE_USER,
+      permissions: [],
     });
   };
 
@@ -48,10 +48,18 @@ export const useAuth = () => {
     setIsAuthenticated(false);
   };
 
+  const handleDeleteAccount = async () => {
+    await deleteAccount();
+    await kindeClient.cleanUp();
+    queryClient.clear();
+    setIsAuthenticated(false);
+  };
+
   return {
     isAuthenticated,
     handleLogin,
     handleRegister,
     handleLogout,
+    handleDeleteAccount,
   };
 };

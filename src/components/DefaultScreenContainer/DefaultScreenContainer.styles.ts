@@ -4,7 +4,7 @@ export const DEFAULT_SCREEN_CONTAINER_PADDING = 12;
 
 export const stylesheet = createStyleSheet((theme) => ({
   wrapper: { flex: 1 },
-  safeAreaView: {
+  bg: {
     backgroundColor: theme.background,
     flex: 1,
   },
@@ -16,7 +16,7 @@ export const stylesheet = createStyleSheet((theme) => ({
   },
   wrapperContentContainer: {
     alignSelf: 'stretch',
-    flexGrow: 1,
+    flex: 1,
   },
   header: {
     flexDirection: 'row',

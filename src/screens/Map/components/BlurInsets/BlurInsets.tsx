@@ -1,9 +1,8 @@
-import { BlurView } from 'expo-blur';
 import React from 'react';
-import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 
+import { BlurView } from '@/components/BlurView/BlurView';
 import { isAndroid } from '@/utils/platform';
 
 import { stylesheet } from './BlurInsets.styles';
@@ -19,9 +18,5 @@ export const BlurInsets: React.FC = () => {
   const { top } = useSafeAreaInsets();
   const { styles } = useStyles(stylesheet);
 
-  return (
-    <View style={styles.container} pointerEvents='none'>
-      <BlurView style={[styles.top, { height: top }]} {...SHARED_PROPS} />
-    </View>
-  );
+  return <BlurView style={[styles.top, { height: top }]} {...SHARED_PROPS} />;
 };

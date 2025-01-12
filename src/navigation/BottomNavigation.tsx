@@ -18,7 +18,7 @@ function BottomNavigation() {
   const { t } = useTranslation();
   return (
     <Tab.Navigator
-      screenOptions={{ headerShown: false }}
+      screenOptions={{ headerShown: false, lazy: true }}
       tabBar={(props) => <BottomTabBar {...props} />}
       initialRouteName={ScreenName.Map}
     >

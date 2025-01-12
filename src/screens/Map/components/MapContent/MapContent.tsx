@@ -40,6 +40,7 @@ export const MapContent: React.FC = () => {
         showsPointsOfInterest={false}
         showsUserLocation={true}
         showsCompass={false}
+        showsMyLocationButton={false}
       >
         {filteredData?.map((survey) => (
           <Marker

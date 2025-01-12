@@ -1,6 +1,7 @@
 import { createStyleSheet } from 'react-native-unistyles';
 
 import { createFontNameForWeight } from '@/styles/typography';
+import { isAndroid } from '@/utils/platform';
 
 export const stylesheet = createStyleSheet((theme) => ({
   container: {
@@ -22,7 +23,7 @@ export const stylesheet = createStyleSheet((theme) => ({
   },
   valueAbsoluteContainer: {
     position: 'absolute',
-    top: -20,
+    top: isAndroid ? -35 : -20,
     left: 0,
     justifyContent: 'center',
     alignItems: 'center',
@@ -35,6 +36,7 @@ export const stylesheet = createStyleSheet((theme) => ({
   },
   valueText: {
     fontFamily: createFontNameForWeight('600'),
+    fontWeight: '600',
     color: theme.background,
   },
 }));

@@ -1,4 +1,3 @@
-import { BlurView } from 'expo-blur';
 import { TextType } from 'geo-survey-map-shared-modules';
 import { Camera, Close, Library } from 'geo-survey-map-shared-modules';
 import React, { useCallback, useEffect, useLayoutEffect } from 'react';
@@ -7,6 +6,7 @@ import { Image, Pressable, View } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useStyles } from 'react-native-unistyles';
 
+import { BlurView } from '@/components/BlurView/BlurView';
 import { GSMText } from '@/components/GSMText/GSMText';
 import { useImagePicker } from '@/hooks/useImagePicker';
 import { useFormStore } from '@/store/useFormStore';

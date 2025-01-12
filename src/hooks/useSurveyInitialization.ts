@@ -14,7 +14,7 @@ export const useSurveyFormInitialization = () => {
   const { setLocation, setLocationName } = useFormStore();
   const { mapRef } = useMap();
 
-  const triggerFormSheet = async (location: Location) => {
+  const triggerFormSheet = async (location: Omit<Location, 'name' | 'countryCode'>) => {
     if (!isAuthenticated) {
       return SheetManager.show(Sheet.Login);
     }
@@ -23,12 +23,16 @@ export const useSurveyFormInitialization = () => {
       edgePadding: { top: 0, right: 0, bottom: SCREEN_HEIGHT * 0.8, left: 0 },
       animated: true,
     });
+    const locationDetails = await mapRef.current?.addressForCoordinate({ latitude: location.x, longitude: location.y });
 
-    setLocation(location);
+    setLocation({
+      ...location,
+      name: locationDetails?.name || '',
+      countryCode: locationDetails?.countryCode.toUpperCase() || '',
+    });
     SheetManager.show(Sheet.Form);
-    const locationName = await mapRef.current?.addressForCoordinate({ latitude: location.x, longitude: location.y });
-    if (!locationName) return;
-    setLocationName(locationName.name);
+    if (!locationDetails) return;
+    setLocationName(locationDetails.name);
   };
 
   return { triggerFormSheet };

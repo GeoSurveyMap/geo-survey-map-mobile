@@ -16,12 +16,13 @@ import { stylesheet } from './AddedPointsList.styles';
 import type { StyleProp, ViewStyle } from 'react-native';
 
 type Props = {
+  style?: StyleProp<ViewStyle>;
   header: React.ReactElement;
   headerStyle?: StyleProp<ViewStyle>;
   onNavigateToDetails: (survey: Survey) => void;
 };
 
-export const AddedPointsList: React.FC<Props> = ({ header, headerStyle, onNavigateToDetails }) => {
+export const AddedPointsList: React.FC<Props> = ({ style, header, headerStyle, onNavigateToDetails }) => {
   const { styles } = useStyles(stylesheet);
   const { data, isFetching, refetch } = useGetUsersSurveys();
   const { refreshing, handleRefresh } = useUserRefresh(refetch);
@@ -61,12 +62,12 @@ export const AddedPointsList: React.FC<Props> = ({ header, headerStyle, onNaviga
       ListEmptyComponent={<EmptyElement />}
       refreshing={refreshing}
       onRefresh={handleRefresh}
-      style={styles.screen}
+      style={[styles.screen, style]}
       contentContainerStyle={[
         styles.list,
         {
           paddingBottom:
-            Math.max(bottom, BOTTOM_BAR_PADDING_VERTICAL) + BOTTOM_BAR_CONTENT_SIZE + BOTTOM_BAR_PADDING_VERTICAL,
+            Math.max(bottom, BOTTOM_BAR_PADDING_VERTICAL) + BOTTOM_BAR_CONTENT_SIZE + BOTTOM_BAR_PADDING_VERTICAL + 100,
         },
       ]}
     />

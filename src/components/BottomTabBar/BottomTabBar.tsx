@@ -1,10 +1,10 @@
-import { BlurView } from 'expo-blur';
 import { TextType } from 'geo-survey-map-shared-modules';
 import { Map, Navigate } from 'geo-survey-map-shared-modules';
 import React, { useCallback } from 'react';
 import { ActivityIndicator, TouchableOpacity, View } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 
+import { BlurView } from '@/components/BlurView/BlurView';
 import { useLocation } from '@/hooks/useLocation';
 import { useMap } from '@/store/useMap';
 

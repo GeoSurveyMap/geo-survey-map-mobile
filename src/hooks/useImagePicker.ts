@@ -17,8 +17,7 @@ type Props = {
 
 const pickerOptions: ImagePickerOptions = {
   mediaTypes: MediaTypeOptions.Images,
-  allowsEditing: true,
-  aspect: [4, 3],
+  allowsEditing: false,
   selectionLimit: 1,
 };
 

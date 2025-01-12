@@ -135,7 +135,7 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
     const response = await mutateAsync({
       category,
       description: problemDescription,
-      locationRequest: { ...location, name: locationName },
+      locationRequest: { ...location },
       solution: '',
       affectedArea: radius ?? 1,
       filePath,

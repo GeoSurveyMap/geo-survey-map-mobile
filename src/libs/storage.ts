@@ -1,10 +1,10 @@
 import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister';
 import { MMKV } from 'react-native-mmkv';
 
-import type { Configuration } from 'react-native-mmkv';
+import type { MMKVConfiguration } from 'react-native-mmkv';
 import type { StateStorage } from 'zustand/middleware';
 
-const encryptedStorageConfig: Configuration = {
+const encryptedStorageConfig: MMKVConfiguration = {
   id: 'gsm-storage',
 };
 

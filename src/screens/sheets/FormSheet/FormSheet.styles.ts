@@ -9,6 +9,10 @@ export const stylesheet = createStyleSheet(() => ({
     gap: 24,
     maxHeight: SCREEN_HEIGHT * 0.6,
   },
-  buttonsContainer: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 8 },
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 8,
+  },
   fullButton: { width: '100%' },
 }));

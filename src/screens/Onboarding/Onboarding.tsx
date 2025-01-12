@@ -29,7 +29,6 @@ enum Stage {
 export const Onboarding: React.FC<OnboardingScreenProps> = ({ navigation }) => {
   const { styles, theme } = useStyles(stylesheet);
   const { t } = useTranslation();
-  const { top } = useSafeAreaInsets();
   const [stage, setStage] = useState(Stage.WELCOME);
   const { setIsOnboarded } = useOnboarding();
 
@@ -79,7 +78,7 @@ export const Onboarding: React.FC<OnboardingScreenProps> = ({ navigation }) => {
   const contentGap = stage === Stage.WELCOME ? 80 : stage === Stage.INSTRUCITON ? 32 : 24;
 
   return (
-    <View style={[styles.screen, { paddingTop: top }]}>
+    <View style={styles.screen}>
       <Animated.View style={styles.gradientWrapper} entering={FadeIn.delay(100).duration(500)}>
         <LinearGradient
           colors={['#42B760', '#0CAF8F', '#007A7A', '#3D2826', theme.background]}
@@ -113,7 +112,7 @@ const WelcomeStageContent: React.FC = () => {
   );
 };
 
-const InstructionStageContent: React.FC = () => {
+export const InstructionStageContent: React.FC<{ hasTitle?: boolean }> = ({ hasTitle = true }) => {
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
 
@@ -137,7 +136,7 @@ const InstructionStageContent: React.FC = () => {
 
   return (
     <>
-      <GSMText textStyle={TextType.H1}>{t('onboarding.instruction.title')}</GSMText>
+      {hasTitle && <GSMText textStyle={TextType.H1}>{t('onboarding.instruction.title')}</GSMText>}
       <FlatList
         data={content}
         renderItem={({ item }) => <InstructionListItem {...item} />}
@@ -148,7 +147,7 @@ const InstructionStageContent: React.FC = () => {
   );
 };
 
-const InstructionListItem: React.FC<{
+export const InstructionListItem: React.FC<{
   Icon: React.FC<React.SVGAttributes<SVGElement>>;
   title: string;
   description: string;
@@ -165,9 +164,10 @@ const InstructionListItem: React.FC<{
   );
 };
 
-const AboutSoilsContent: React.FC<{ handleOpenCategoryInfo: (category: Category) => void }> = ({
-  handleOpenCategoryInfo,
-}) => {
+export const AboutSoilsContent: React.FC<{
+  handleOpenCategoryInfo: (category: Category) => void;
+  hasTitle?: boolean;
+}> = ({ handleOpenCategoryInfo, hasTitle = true }) => {
   const { t } = useTranslation();
   const { styles, theme } = useStyles(stylesheet);
   const { categories } = useFiltersState();
@@ -175,7 +175,7 @@ const AboutSoilsContent: React.FC<{ handleOpenCategoryInfo: (category: Category)
   return (
     <>
       <View style={styles.textsWrapper}>
-        <GSMText textStyle={TextType.H1}>{t('onboarding.aboutSoils.title')}</GSMText>
+        {hasTitle && <GSMText textStyle={TextType.H1}>{t('onboarding.aboutSoils.title')}</GSMText>}
         <GSMText textStyle={TextType.P}>{t('onboarding.aboutSoils.description')}</GSMText>
       </View>
 
