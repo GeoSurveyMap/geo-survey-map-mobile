@@ -11,7 +11,7 @@ import { stylesheet } from './PrivacyPolicy.styles';
 
 import type { PrivacyPolicyScreenProps } from '@/navigation/navigation.types';
 
-const PRIVACY_POLICY_URL = 'https://drive.google.com/file/d/1INLA9j3BOlkj4DDxGZPAXhoTJvptci4K/preview';
+const PRIVACY_POLICY_URL = 'https://drive.google.com/file/d/1ijxuuFzu0iMtlPASUuMzCdcbQcAJBWYZ/preview';
 
 export const PrivacyPolicy: React.FC<PrivacyPolicyScreenProps> = () => {
   const { styles } = useStyles(stylesheet);
