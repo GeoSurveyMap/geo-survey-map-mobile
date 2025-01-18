@@ -1,0 +1,12 @@
+# maestro test, app id: eu.loess.geosurveymap
+
+# Launch app
+app_id: eu.loess.geosurveymap
+---
+- launchApp
+- runFlow:
+    when:
+      visible: "Welcome to\nLOESS Soil Map!"
+    file: "onboarding.yaml"
+
+

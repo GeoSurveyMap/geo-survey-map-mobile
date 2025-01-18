@@ -1,0 +1,8 @@
+appId: eu.loess.geosurveymap
+---
+- assertVisible: "Welcome to\nLOESS Soil Map!"
+- tapOn: "Continue"
+- assertVisible: "How to use our tool?"
+- tapOn: "Continue"
+- assertVisible: "About soils"
+- tapOn: "Go to the app"

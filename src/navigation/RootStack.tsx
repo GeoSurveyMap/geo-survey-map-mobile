@@ -21,7 +21,7 @@ function RootStack() {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName={isOnboarded ? ScreenName.BottomNavigation : ScreenName.Onboarding}
+      initialRouteName={false ? ScreenName.BottomNavigation : ScreenName.Onboarding}
     >
       <Stack.Screen name={ScreenName.Onboarding} component={Onboarding} />
       <Stack.Screen

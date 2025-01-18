@@ -75,7 +75,9 @@ export const Profile: React.FC<ProfileScreenProps> = ({ navigation }) => {
 
   const ListHeader = () => (
     <>
-      <GSMText textStyle={TextType.TITLE}>{t('userProfile.title')}</GSMText>
+      <GSMText textStyle={TextType.TITLE} adjustsFontSizeToFit numberOfLines={2}>
+        {t('userProfile.title')}
+      </GSMText>
       <Section title={t('userProfile.manageAccount')}>
         {isAuthenticated ? (
           <>

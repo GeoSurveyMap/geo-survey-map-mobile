@@ -18,13 +18,13 @@ import { stylesheet } from './MapContent.styles';
 export const MapContent: React.FC = () => {
   const { styles } = useStyles(stylesheet);
   const { categories } = useFiltersState();
-  const { data } = useGetAllSurveys();
+  const { data, error, status } = useGetAllSurveys();
   const { triggerFormSheet } = useSurveyFormInitialization();
   const { mapRef } = useMap();
   const { location, category, radius } = useFormStore();
   const filteredData = useMemo(() => data?.filter((survey) => categories[survey.category]), [data, categories]);
   const { setSelectedPoint, selectedPoint } = usePointFocusStore();
-
+  console.log(error);
   return (
     <View style={styles.container}>
       <MapView

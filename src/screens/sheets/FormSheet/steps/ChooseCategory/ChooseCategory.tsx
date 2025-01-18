@@ -4,11 +4,13 @@ import React from 'react';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { type ListRenderItemInfo, SectionList } from 'react-native';
+import { SheetManager } from 'react-native-actions-sheet';
 import { useStyles } from 'react-native-unistyles';
 
 import { GSMText } from '@/components/GSMText/GSMText';
 import { ScreenName } from '@/navigation/navigation.types';
 import { useFormStore } from '@/store/useFormStore';
+import { Sheet } from '@/types/sheets';
 
 import { stylesheet } from './ChooseCategory.styles';
 import { CategoryItem } from './components/CategoryItem/CategoryItem';
@@ -32,7 +34,12 @@ export const ChooseCategory = () => {
         category={item}
         onPress={() => setCategory(item)}
         isSelected={category === item}
-        onQuestionPress={() => navigate(ScreenName.CategoryInfo, { category: item })}
+        onQuestionPress={async () => {
+          await SheetManager.hide(Sheet.Form);
+          setTimeout(() => {
+            navigate(ScreenName.CategoryInfo, { category: item });
+          }, 500);
+        }}
       />
     ),
     [category, navigate, setCategory],

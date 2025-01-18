@@ -23,7 +23,9 @@ export const Settings: React.FC<SettingsScreenProps> = ({ navigation }) => {
 
   return (
     <DefaultScreenContainer scrollable style={[styles.container, { paddingTop: top + 24 }]}>
-      <GSMText textStyle={TextType.TITLE}>{t('settings.title')}</GSMText>
+      <GSMText textStyle={TextType.TITLE} adjustsFontSizeToFit numberOfLines={1}>
+        {t('settings.title')}
+      </GSMText>
       <Section title={t('settings.appLanguage')}>
         <GSMSelect
           items={availableLanguages.map(({ name, emoji, languageCode }) => ({

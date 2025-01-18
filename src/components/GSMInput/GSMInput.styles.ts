@@ -14,6 +14,7 @@ export const stylesheet = createStyleSheet((theme) => ({
     borderRadius: 8,
     color: theme.text,
     fontWeight: 'semibold',
+    textAlignVertical: 'top',
   },
   multiline: {
     minHeight: 100,

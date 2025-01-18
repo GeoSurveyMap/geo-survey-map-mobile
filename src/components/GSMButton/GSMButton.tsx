@@ -63,7 +63,7 @@ export const GSMButton: React.FC<GSMButtonProps> = ({
       {loading ? (
         <ActivityIndicator color={textColor} />
       ) : (
-        <GSMText textStyle={TextType.H4} color={textColor}>
+        <GSMText textStyle={TextType.H4} color={textColor} adjustsFontSizeToFit>
           {title}
         </GSMText>
       )}

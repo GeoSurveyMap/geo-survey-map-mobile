@@ -1,4 +1,10 @@
-import { TextType, useCreateSurvey, useFileUpload } from 'geo-survey-map-shared-modules';
+import {
+  TextType,
+  useCreateSurvey,
+  useFileUpload,
+  useGetAllSurveys,
+  useGetUsersSurveys,
+} from 'geo-survey-map-shared-modules';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Keyboard, LayoutAnimation, Pressable, UIManager, View } from 'react-native';
@@ -52,10 +58,14 @@ const Title = ({ currentStage }: { currentStage: FormStepName }) => {
 };
 
 export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
-  const { reset, radius, photoAsset, category, location, problemDescription, locationName } = useFormStore();
+  const { reset, radius, photoAsset, category, location, problemDescription, locationName, problemSolution } =
+    useFormStore();
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
   const { mutateAsync, isPending: isCreateSurveyInProgress } = useCreateSurvey();
+  const { refetch: refetchMapSurveys } = useGetAllSurveys();
+  const { refetch: refetchUserSurveys } = useGetUsersSurveys();
+
   const { mutateAsync: uploadFileAsync, isPending: isUploadFileInProgress } = useFileUpload();
 
   const [currentStage, setCurrentStage] = useState(FormStepName.CHOOSE_CATEGORY);
@@ -135,8 +145,8 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
     const response = await mutateAsync({
       category,
       description: problemDescription,
-      locationRequest: { ...location },
-      solution: '',
+      locationRequest: { ...location, name: locationName },
+      solution: problemSolution,
       affectedArea: radius ?? 1,
       filePath,
     });
@@ -144,6 +154,8 @@ export const FormSheet: React.FC<SheetProps<Sheet.Form>> = () => {
     if (response) {
       reset();
       handleStageChange(FormStepName.SUCCESS);
+      refetchMapSurveys();
+      refetchUserSurveys();
     }
   };
 

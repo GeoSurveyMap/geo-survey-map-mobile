@@ -10,7 +10,6 @@ type FormStore = {
   photoAsset: ImagePickerAsset | undefined;
   locationName: string;
   problemDescription: string;
-  problemSolutionType: string;
   problemSolution: string;
 
   setLocation: (location: Location | null) => void;
@@ -19,7 +18,6 @@ type FormStore = {
   setPhotoAsset: (photoAsset: ImagePickerAsset | undefined) => void;
   setLocationName: (locationName: string) => void;
   setProblemDescription: (problemDescription: string) => void;
-  setProblemSolutionType: (problemSolutionType: string) => void;
   setProblemSolution: (problemSolution: string) => void;
   reset: () => void;
 };
@@ -31,7 +29,6 @@ export const useFormStore = create<FormStore>((set) => ({
   photoAsset: undefined,
   locationName: '',
   problemDescription: '',
-  problemSolutionType: '',
   problemSolution: '',
 
   setLocation: (location) => set({ location }),
@@ -40,7 +37,6 @@ export const useFormStore = create<FormStore>((set) => ({
   setPhotoAsset: (photoAsset) => set({ photoAsset }),
   setLocationName: (locationName) => set({ locationName }),
   setProblemDescription: (problemDescription) => set({ problemDescription }),
-  setProblemSolutionType: (problemSolutionType) => set({ problemSolutionType }),
   setProblemSolution: (problemSolution) => set({ problemSolution }),
   reset: () =>
     set({
@@ -50,5 +46,6 @@ export const useFormStore = create<FormStore>((set) => ({
       photoAsset: undefined,
       locationName: '',
       problemDescription: '',
+      problemSolution: '',
     }),
 }));
